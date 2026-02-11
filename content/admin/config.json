@@ -35,9 +35,10 @@
         },
 
 		{
-			"name": "produktino",
-			"label": "Produktes",
+			"label": "Produkte",
+			"name": "produkte",
 			"folder": "/content/produkte",
+			"format": "json",
 			"fields": [
 				{
 					"label": "Title",
