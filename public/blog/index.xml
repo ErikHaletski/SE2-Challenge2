@@ -7,19 +7,5 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>1st Post</title>
-      <link>http://localhost:1313/blog/1st-post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/1st-post/</guid>
-      <description>&lt;p&gt;Content&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>asd</title>
-      <link>http://localhost:1313/blog/asd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/asd/</guid>
-      <description>&lt;p&gt;asd&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
