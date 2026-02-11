@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mein Erster Post!</title>
-      <link>http://localhost:1313/blog/mein-erster-post/</link>
+      <title>1st Post</title>
+      <link>http://localhost:1313/blog/1st-post/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/mein-erster-post/</guid>
-      <description>&lt;p&gt;Hallo Welt!&lt;/p&gt;</description>
+      <guid>http://localhost:1313/blog/1st-post/</guid>
+      <description>&lt;p&gt;Content&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
