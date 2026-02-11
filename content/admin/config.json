@@ -35,8 +35,8 @@
         },
 
 		{
-			"name": "Produkte",
-			"label": "Produkte",
+			"name": "produktino",
+			"label": "Produktes",
 			"folder": "/content/produkte",
 			"fields": [
 				{
