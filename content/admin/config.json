@@ -32,6 +32,24 @@
 					"widget": "datetime" 
 				}
             ]
-        }
+        },
+
+		{
+			"name": "Produkte",
+			"label": "Produkte",
+			"folder": "/content/produkte",
+			"fields": [
+				{
+					"label": "Title",
+					"name": "title",
+					"widget": "string"
+				},
+				{
+					"label": "Protein",
+					"name": "protein",
+					"widget": "number"
+				}
+			]
+		}
     ]
 }
