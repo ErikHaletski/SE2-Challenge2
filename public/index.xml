@@ -14,19 +14,5 @@
       <guid>http://localhost:1313/admin/</guid>
       <description>&lt;!DOCTYPE html&gt;&#xA;&lt;html&gt;&#xA;  &lt;link href=&#34;http://localhost:1313/admin/config.json&#34; type=&#34;application/json&#34; rel=&#34;cms-config-url&#34; /&gt;&#xA;  &lt;head&gt;&#xA;    &lt;meta charset=&#34;utf-8&#34; /&gt;&#xA;    &lt;meta name=&#34;robots&#34; content=&#34;noindex&#34; /&gt;&#xA;    &lt;title&gt;Sveltia CMS&lt;/title&gt;&#xA;  &lt;/head&gt;&#xA;  &lt;body&gt;&#xA;    &lt;script src=&#34;https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js&#34;&gt;&lt;/script&gt;&#xA;  &lt;/body&gt;&#xA;&lt;/html&gt;</description>
     </item>
-    <item>
-      <title>1st Post</title>
-      <link>http://localhost:1313/blog/1st-post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/1st-post/</guid>
-      <description>&lt;p&gt;Content&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>asd</title>
-      <link>http://localhost:1313/blog/asd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/asd/</guid>
-      <description>&lt;p&gt;asd&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
