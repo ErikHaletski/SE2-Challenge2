@@ -9,7 +9,7 @@
 	<body>
 		<h1>Nice. It's looking good already.</h1>
 		<ul>
-			{{ range (where .Pages "Section" "post") }}
+			{{ range (where .Pages "Section" "blog") }}
 			<li>
 				<a href="{{ .RelPermalink }}">
 					{{ .Title }}
