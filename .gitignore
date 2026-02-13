@@ -1,5 +1,6 @@
 # Rendered Pages
 public/
+resources/
 
 # Program Binaries
 *.exe
