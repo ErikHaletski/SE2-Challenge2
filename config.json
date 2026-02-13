@@ -1,7 +1,8 @@
 {
     "backend": {
         "name": "github",
-        "repo": "ErikHaletski/SE2-Challenge2"
+        "repo": "ErikHaletski/SE2-Challenge2",
+		"branch": "develop"
     },
     "media_folder": "/static/media",
     "public_folder": "/media",
@@ -23,5 +24,6 @@
                 }
             ]
         }
-    ] 
+    ],
+	"pluralizeListTitles": false
 }
