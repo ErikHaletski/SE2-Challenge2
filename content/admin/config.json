@@ -39,8 +39,9 @@
 			"label": "Produkte",
 			"name": "produkte",
 			"folder": "/content/produkte",
-			"format": "json",
 			"create": true,
+			"extension": "md",
+			"format": "frontmatter",
 			"identifier_field": "product_id",
 			"fields": [
 				{	
@@ -142,8 +143,9 @@
 			"label": "Labels",
 			"name": "labels",
 			"folder": "/content/labels",
-			"format": "json",
 			"create": true,
+			"extension": "md",
+ 			"format": "frontmatter",
 			"identifier_field": "label_id",
 			"fields": [
 				{
@@ -163,8 +165,9 @@
 			"label": "Ersatzprodukte",
 			"name": "ersatzprodukte",
 			"folder": "/content/ersatzprodukte",
-			"format": "json",
 			"create": true,
+			"extension": "md",
+ 			"format": "frontmatter",
 			"identifier_field": "title",
 			"fields": [
 				{
