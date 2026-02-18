@@ -169,23 +169,6 @@
 		},
 
 		{
-			"label": "NutriScores",
-			"name": "nutriscores",
-			"folder": "/content/nutriscores",
-			"media_folder": "/static/media/nutriscore",
-			"public_folder": "/media/nutriscore",
-			"create": true,
-			"extension": "md",
-			"format": "frontmatter",
-			"identifier_field": "score",
-			"fields": [
-				{ "label": "Score", "name": "score", "widget": "select", "options": ["A","B","C","D","E"] },
-				{ "label": "Title", "name": "title", "widget": "string" },
-				{ "label": "Image", "name": "image", "widget": "image" }
-			]
-		},
-
-		{
 			"label": "Ersatzprodukte",
 			"name": "ersatzprodukte",
 			"folder": "/content/ersatzprodukte",

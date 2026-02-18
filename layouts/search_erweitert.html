@@ -1,0 +1,68 @@
+{{ define "main" }}
+<article class="pa3 pa4-ns nested-copy-line-height">
+  <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
+  {{- .Content -}}
+  </section>
+
+  <form action="{{ .RelPermalink }}" method="GET" class="tc mt3">
+    <input type="search" name="q" id="search-query" placeholder="Search...." class="pa2 w-60-ns w-100">
+    <button type="submit" class="pa2 ml2-ns mt2 mt0-ns">Search</button>
+  </form>
+
+  <section id="search-results" class="flex-ns mt5 flex-wrap justify-around"></section>
+  <div class="search-loading tc mid-gray f4 mt4">Loading...</div>
+
+  <script>
+    // Produkte: product_id -> Daten
+    window.SEARCH_PRODUCTS = {
+    {{- $first := true -}}
+    {{- with .Site.GetPage "/produkte" -}}
+    {{- range .Pages -}}
+    {{- $pid := lower (default "" .Params.product_id) -}}
+    {{- if $pid -}}
+    {{- if not $first }},{{ end -}}
+    {{- $first = false -}}
+
+    {{- $img := "" -}}
+    {{- with .Params.image -}}
+    {{- $img = (. | relURL) -}}
+    {{- end -}}
+
+    {{- $obj := dict
+      "id" $pid
+      "title" .Title
+      "link" .RelPermalink
+      "image" $img
+      "description" (default "" .Params.description)
+      "ratio" (default "" .Params.ratio)
+      -}}
+    {{- printf "%q: %s" $pid ($obj | jsonify) | safeJS -}}
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
+    };
+
+    // Relations: searchProduct -> substituteProduct + hint
+    window.SEARCH_RELS = [
+      {{- $rfirst := true -}}
+    {{- range (where .Site.RegularPages "Section" "ersatzprodukte") -}}
+    {{- $sp := lower (default "" .Params.searchProduct) -}}
+    {{- $sub := lower (default "" .Params.substituteProduct) -}}
+    {{- if and $sp $sub -}}
+    {{- if not $rfirst }},{{ end -}}
+    {{- $rfirst = false -}}
+    {{- dict
+      "searchProduct" $sp
+      "substituteProduct" $sub
+      "hint" (default "" .Params.hint)
+    | jsonify | safeJS -}}
+    {{- end -}}
+    {{- end -}}
+    ];
+  </script>
+
+  {{ with resources.Get "js/search_erweitert.js" }}
+  <script src="{{ .RelPermalink }}"></script>
+  {{ end }}
+</article>
+{{ end }}
