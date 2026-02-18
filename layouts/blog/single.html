@@ -11,6 +11,16 @@
     <p class="date">{{ .Date }}</p>
     <p class="description">{{ .Params.description }}</p>
 	<p>{{ .Params.title }}</p>
+	{{ with .Site.GetPage "/blog" }}
+		<script> var pages = [];</script>
+		<ul>
+			{{ range .Pages }}
+				<li>{{ .Title }}</li>
+				<script> pages.push("{{ .Title }}".toLowerCase());</script>
+			{{ end }}
+		</ul>
+		<script> console.log(pages) </script>
+	{{ end }}
     <article class="content">
       {{ .Content }}
     </article>
