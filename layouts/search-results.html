@@ -1,0 +1,66 @@
+{{ define "main" }}
+<article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
+    {{- .Content -}}
+    </section>
+
+    {{/* search term (hardcoded via front matter for now) */}}
+    {{ $term := lower (default "salami" .Params.term) }}
+
+    {{/* all relations */}}
+    {{ $relsAll := where .Site.RegularPages "Section" "ersatzprodukte" }}
+    {{ $rels := where $relsAll "Params.searchProduct" $term }}
+
+    {{/* collect unique substituteProduct ids + hints */}}
+    {{ $ids := slice }}
+    {{ $hints := dict }}
+
+    {{ range $rels }}
+    {{ $id := lower (default "" .Params.substituteProduct) }}
+    {{ if $id }}
+    {{ if not (in $ids $id) }}
+    {{ $ids = $ids | append $id }}
+    {{ end }}
+    {{ with .Params.hint }}
+    {{ $hints = merge $hints (dict $id .) }}
+    {{ end }}
+    {{ end }}
+    {{ end }}
+
+    {{/* resolve ids -> product pages */}}
+    {{ $products := slice }}
+    {{ range $ids }}
+    {{ $p := $.Site.GetPage (printf "/produkte/%s" .) }}
+    {{ if $p }}
+    {{ $products = $products | append $p }}
+    {{ end }}
+    {{ end }}
+
+    {{ if gt (len $products) 0 }}
+    <section class="flex-ns mt5 flex-wrap justify-around">
+        {{ range $products }}
+        {{ $pid := lower (default "" .Params.product_id) }}
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            {{ with .Params.image }}
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-100 br2 mb2" loading="lazy">
+            {{ end }}
+
+            {{ .Render "summary" }}
+
+            {{ with (index $hints $pid) }}
+            <div class="pa3 pt0">
+                <p class="f6 mid-gray lh-copy ma0">
+                    {{ . }}
+                </p>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </section>
+    {{ else }}
+    <p class="tc mid-gray f4 mt5">
+        No substitutes found for “{{ $term }}”.
+    </p>
+    {{ end }}
+</article>
+{{ end }}
