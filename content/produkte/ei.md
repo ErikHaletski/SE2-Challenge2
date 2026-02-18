@@ -9,8 +9,9 @@ sugars: 0.4
 fiber: 0
 protein: 13
 salt: 0.4
+image: /media/produkte/ei.png
 best_for: "Backen, Frühstück, Bindung"
-nutriscore: B
+nutriscore: A
 texture: 5
 description: "Vielseitig beim Kochen und Backen; gute Bindung und Struktur."
 ratio: "1:1"

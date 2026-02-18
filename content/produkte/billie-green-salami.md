@@ -9,9 +9,9 @@ sugars: 0.8
 fiber: 0
 protein: 22
 salt: 4.2
-image: media/produkte/billie-green-salami.png
+image: /media/produkte/billie-green-salami.png
 best_for: "Pizza, Brotzeit"
-nutriscore: D
+nutriscore: E
 texture: 8
 description: "Würzige Rohwurst, typischerweise aus Schwein/Rind."
 ratio: "1:1"

@@ -9,6 +9,7 @@ sugars: 1.0
 fiber: 0
 protein: 18
 salt: 0.6
+image: /media/produkte/mozzarella.png
 best_for: "Pizza, Caprese"
 nutriscore: C
 texture: 6

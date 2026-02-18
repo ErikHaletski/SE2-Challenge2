@@ -39,6 +39,7 @@
 			"label": "Produkte",
 			"name": "produkte",
 			"folder": "/content/produkte",
+			"media_folder": "/static/media/produkte",
 			"create": true,
 			"extension": "md",
 			"format": "frontmatter",
@@ -97,8 +98,7 @@
 				{
 					"label": "Image",
 					"name": "image",
-					"widget": "image",
-					"required": false
+					"widget": "image"
 				},
 				{
 					"label": "best for",
@@ -108,7 +108,8 @@
 				{
 					"label": "Nutriscore",
 					"name": "nutriscore",
-					"widget": "string"
+					"widget": "select",
+					"options": ["A","B","C","D","E"]
 				},
 				{
 					"label": "Texture",
@@ -143,6 +144,7 @@
 			"label": "Labels",
 			"name": "labels",
 			"folder": "/content/labels",
+			"media_folder": "/static/media/labels",
 			"create": true,
 			"extension": "md",
  			"format": "frontmatter",
@@ -157,7 +159,29 @@
 					"label": "Title",
 					"name": "title",
 					"widget": "string"
+				},
+				{
+					"label": "Image",
+					"name": "image",
+					"widget": "image"
 				}
+			]
+		},
+
+		{
+			"label": "NutriScores",
+			"name": "nutriscores",
+			"folder": "/content/nutriscores",
+			"media_folder": "/static/media/nutriscore",
+			"public_folder": "/media/nutriscore",
+			"create": true,
+			"extension": "md",
+			"format": "frontmatter",
+			"identifier_field": "score",
+			"fields": [
+				{ "label": "Score", "name": "score", "widget": "select", "options": ["A","B","C","D","E"] },
+				{ "label": "Title", "name": "title", "widget": "string" },
+				{ "label": "Image", "name": "image", "widget": "image" }
 			]
 		},
 
