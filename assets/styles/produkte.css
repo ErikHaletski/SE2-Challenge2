@@ -1,0 +1,48 @@
+h1 {
+    padding: 1rem 2rem; 
+}
+
+ul.navbar {
+    list-style: none;
+    display: flex;
+    padding-left: 2rem; 
+    margin-bottom: 0;
+   
+}
+
+.navbar button {
+    border: 1px solid black;
+    border-bottom: none;
+    background-color: rgb(188, 186, 186);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 5px 5px 0 0;
+}
+
+.navbar button:hover {
+    background-color: #ddd;
+}
+
+
+ul.navbar li {
+    display: inline;
+}
+
+.produkt-detail {
+    display: flex;         
+    gap: 2rem;
+    padding-left: 2rem; 
+    margin-top: 0;
+}
+
+.produkt-image img {
+    max-height: 15rem;
+    width: auto;
+    border: 1px solid black;
+}
+
+.produkt-info ul {
+    list-style: disc inside;
+    padding-left: 0;
+}

@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ with resources.Get "styles/produkte.css" }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}">
+{{end}}
+
+  <h1>{{ .Title }}</h1>
+
+<ul class="navbar">
+  <li><button>Übersicht</button></li>
+  <li><button>Nährwerte</button></li>
+</ul>
+
+<div class="produkt-detail">
+  <div class="produkt-image">
+    {{ with .Params.image }}
+      <img src="{{ . }}" alt="Produktbild von {{ $.Title }}">
+    {{ end }}
+  </div>
+  <div class="produkt-info">
+    <p>{{ .Content }}</p>
+    <ul>
+      <li>Ratio: {{ .Params.ratio }}</li>
+      <li>Best For: {{ .Params.bestFor }}</li>
+      <li>Label: {{ range .Params.label }}{{ . }} {{ end }}</li>
+    </ul>
+  </div>
+</div>
+
+{{ end }}
