@@ -2,7 +2,7 @@
     "backend": {
         "name": "github",
         "repo": "ErikHaletski/SE2-Challenge2",
-		"branch": "develop"
+		"branch": "SE2-36-ui-searchresult"
     },
     "media_folder": "/static/media",
     "public_folder": "/media",
@@ -39,7 +39,143 @@
 			"label": "Produkte",
 			"name": "produkte",
 			"folder": "/content/produkte",
-			"format": "json",
+			"media_folder": "/static/media/produkte",
+			"create": true,
+			"extension": "md",
+			"format": "frontmatter",
+			"identifier_field": "product_id",
+			"fields": [
+				{	
+					 "label": "Product ID",
+					 "name": "product_id",
+					 "widget": "string"
+				},
+				{
+					"label": "Title",
+					"name": "title",
+					"widget": "string"
+				},
+				{
+					"label": "Calories",
+					"name": "calories",
+					"widget": "number"
+				},
+				{
+					"label": "Fats",
+					"name": "fats",
+					"widget": "number"
+				},
+				{
+					 "label": "Saturated Fats",
+					 "name": "saturated_fats",
+					 "widget": "number"
+				},
+				{
+					"label": "Carbs",
+					"name": "carbs",
+					"widget": "number"
+				},
+				{
+					"label": "Sugars",
+					"name": "sugars",
+					"widget": "number"
+				},
+				{
+					"label": "Fiber",
+					"name": "fiber",
+					"widget": "number"
+				},
+				{
+					"label": "Protein",
+					"name": "protein",
+					"widget": "number"
+				},
+				{
+					"label": "Salt",
+					"name": "salt",
+					"widget": "number"
+				},
+				{
+					"label": "Image",
+					"name": "image",
+					"widget": "image"
+				},
+				{
+					"label": "best for",
+					"name": "best_for",
+					"widget": "string"
+				},
+				{
+					"label": "Nutriscore",
+					"name": "nutriscore",
+					"widget": "select",
+					"options": ["A","B","C","D","E"]
+				},
+				{
+					"label": "Texture",
+					"name": "texture",
+					"widget": "number"
+				},
+				{
+					"label": "Description",
+					"name": "description",
+					"widget": "string"
+				},
+				{
+					"label": "Ratio",
+					"name": "ratio",
+					"widget": "string"
+				},
+				{
+					"label": "Labels",
+					"name": "labels",
+					"widget": "relation",
+					"collection": "labels",
+					"value_field": "label_id",
+					"search_fields": ["label_id", "title"],
+					"display_fields": ["title"],
+					"multiple": true,
+					"required": true
+				}
+			]
+		},
+
+		{
+			"label": "Labels",
+			"name": "labels",
+			"folder": "/content/labels",
+			"media_folder": "/static/media/labels",
+			"create": true,
+			"extension": "md",
+ 			"format": "frontmatter",
+			"identifier_field": "label_id",
+			"fields": [
+				{
+					"label": "Label ID",
+					"name": "label_id",
+					"widget": "string"
+				},
+				{
+					"label": "Title",
+					"name": "title",
+					"widget": "string"
+				},
+				{
+					"label": "Image",
+					"name": "image",
+					"widget": "image"
+				}
+			]
+		},
+
+		{
+			"label": "Ersatzprodukte",
+			"name": "ersatzprodukte",
+			"folder": "/content/ersatzprodukte",
+			"create": true,
+			"extension": "md",
+ 			"format": "frontmatter",
+			"identifier_field": "title",
 			"fields": [
 				{
 					"label": "Title",
@@ -47,9 +183,30 @@
 					"widget": "string"
 				},
 				{
-					"label": "Protein",
-					"name": "protein",
-					"widget": "number"
+					"label": "Search Product",
+					"name": "searchProduct",
+					"widget": "relation",
+					"collection": "produkte",
+					"search_fields": ["product_id", "title"],
+					"value_field": "product_id",
+					"display_fields": ["title"],
+					"required": true
+				},
+				{
+					"label": "Substitute Product",
+					"name": "substituteProduct",
+					"widget": "relation",
+					"collection": "produkte",
+					"search_fields": ["product_id", "title"],
+					"value_field": "product_id",
+					"display_fields": ["title"],
+					"required": true
+				},
+				{
+					"label": "Hint",
+					"name": "hint",
+					"widget": "text",
+					"required": false
 				}
 			]
 		}
