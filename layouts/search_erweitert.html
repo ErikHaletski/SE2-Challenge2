@@ -9,7 +9,7 @@
     <button type="submit" class="pa2 ml2-ns mt2 mt0-ns">Search</button>
   </form>
 
-  <section id="search-results" class="flex-ns mt5 flex-wrap justify-around"></section>
+  <section id="search-results" class="mt5"></section>
   <div class="search-loading tc mid-gray f4 mt4">Loading...</div>
 
   <script>
@@ -62,7 +62,13 @@
   </script>
 
   {{ with resources.Get "js/search_erweitert.js" }}
-  <script src="{{ .RelPermalink }}"></script>
+  {{ $js := . | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ with resources.Get "css/search_erweitert.css" }}
+  {{ $css := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   {{ end }}
 </article>
 {{ end }}

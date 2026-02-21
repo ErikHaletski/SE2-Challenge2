@@ -74,10 +74,16 @@
     // html für produktkarte erzeugen (ich will quasi tiles mit bild, titel und read more)
     function renderCard(p) {
         const imgHtml = p.image
-            ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" class="w-100 br2 mb2" loading="lazy">`
-            : "";
+            ? `
+      <div class="product-media">
+        <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">
+      </div>`
+            : `
+      <div class="product-media product-media--placeholder"></div>
+    `;
+
         return `
-    <div class="w-100 w-30-l mb4 relative bg-white">
+    <div class="product-card">
       ${imgHtml}
       <div class="pa3">
         <h2 class="f3 mt2 mb3">
