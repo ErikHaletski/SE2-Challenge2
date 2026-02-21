@@ -1,0 +1,95 @@
+h1 {
+    padding: 1rem 2rem; 
+}
+
+ul.navbar {
+    list-style: none;
+    display: flex;
+    padding-left: 2rem; 
+    margin-bottom: 0;
+   
+}
+
+.navbar button {
+    border: 1px solid black;
+    border-bottom: none;
+    background-color: rgb(188, 186, 186);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 5px 5px 0 0;
+}
+
+.navbar button:hover {
+    background-color: #ddd;
+}
+
+.navbar button.active {
+    background: #787a7c;
+    color: white;
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+
+ul.navbar li {
+    display: inline;
+}
+
+.produkt-detail {
+    display: flex;
+    gap: 2rem;
+    padding-left: 2rem;
+  }
+  
+  .produkt-image {
+    flex: 0 0 250px;
+  }
+  
+  .produkt-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    max-height: 40vh;
+  }
+  
+  
+
+.produkt-info ul {
+    list-style: disc inside;
+    padding-left: 0;
+}
+
+.nutritions-detail {
+    display: none;
+    padding-left: 2rem; 
+}
+
+.table-wrapper {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .nutrition-table {
+    flex: 1 1 300px;
+    max-width: 400px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .nutrition-table th,
+  .nutrition-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+  }
+  
+.nutrition-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+}
+
+.nutrition-table tr:nth-child(even) {
+  background-color: #aaaaaa;
+}
+    

@@ -2,7 +2,7 @@
     "backend": {
         "name": "github",
         "repo": "ErikHaletski/SE2-Challenge2",
-		"branch": "SE2-36-ui-searchresult"
+		"branch": "SE2-29-ui-detailansicht-ubersicht"
     },
     "media_folder": "/static/media",
     "public_folder": "/media",

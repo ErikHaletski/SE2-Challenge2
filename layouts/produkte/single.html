@@ -1,29 +1,113 @@
 {{ define "main" }}
-{{ with resources.Get "styles/produkte.css" }}
+{{ with resources.Get "css/produkte.css" }}
   <link rel="stylesheet" href="{{ .RelPermalink }}">
 {{end}}
+{{ with resources.Get "js/overview.js" }}
+  <script src="{{ .RelPermalink }}"></script>
+  {{ end }}
 
   <h1>{{ .Title }}</h1>
 
 <ul class="navbar">
-  <li><button>Übersicht</button></li>
-  <li><button>Nährwerte</button></li>
+  <li><button id="btn-overview" class="active" onclick="showOverview()">Übersicht</button></li>
+  <li><button id="btn-nutrition" onclick="showNutrition()">Nährwerte</button></li>
 </ul>
 
-<div class="produkt-detail">
+<div id="produkt-id" class="produkt-detail" >
   <div class="produkt-image">
     {{ with .Params.image }}
       <img src="{{ . }}" alt="Produktbild von {{ $.Title }}">
     {{ end }}
   </div>
   <div class="produkt-info">
-    <p>{{ .Content }}</p>
+    <h3>Beschreibung:</h3>
+    <p>{{ .Params.description }}</p>
     <ul>
-      <li>Ratio: {{ .Params.ratio }}</li>
-      <li>Best For: {{ .Params.bestFor }}</li>
-      <li>Label: {{ range .Params.label }}{{ . }} {{ end }}</li>
+      <li><strong>Best For:</strong> {{ .Params.best_for }}</li>
+      <li><strong>Label:</strong> {{ range .Params.labels }}{{ . }} {{ end }}</li>
     </ul>
   </div>
 </div>
 
+<div id="nutritions-detail" class="nutritions-detail">
+  <div class="table-wrapper">
+    <table class="nutrition-table">
+      <tr>
+        <th>Nähwerte:</th>
+        <th>je 100g</th>
+      </tr>
+      <tr>
+        <td>Energie:</td>
+        <td>{{ .Params.calories }}kcal</td>
+      </tr>
+      <tr>
+        <td>Fett:</td>
+        <td>{{ .Params.fats }}g</td>
+      </tr>
+      <tr>
+        <td>- <i>davon gesättigte Fettsäuren:</i></td>
+        <td>{{ .Params.saturated_fats }}g</td>
+      </tr>
+      <tr>
+        <td>Kohlenhydrate:</td>
+        <td>{{ .Params.carbs }}g</td>
+      </tr>
+      <tr>
+        <td>- <i>davon Zucker:</i></td>
+        <td>{{ .Params.sugars }}g</td>
+      </tr>
+      <tr>
+        <td>Ballaststoffe:</td>
+        <td>{{ .Params.fiber }}g</td>
+      </tr>
+      <tr>
+        <td>Eiweiß:</td>
+        <td>{{ .Params.protein }}g</td>
+      </tr>
+      <tr>
+        <td>Salz:</td>
+        <td>{{ .Params.salt }}g</td>
+      </tr>
+    </table>
+
+    <table class="nutrition-table">
+      <tr>
+        <th>je 100g</th>
+        <th>Nähwerte:</th>
+      </tr>
+      <tr>
+        <td>{{ .Params.calories }}kcal</td>
+        <td>Energie:</td>
+      </tr>
+      <tr>
+        <td>{{ .Params.fats }}g</td>
+        <td>Fett:</td>
+      </tr>
+      <tr>
+        <td>{{ .Params.saturated_fats }}g</td>
+        <td>- <i>davon gesättigte Fettsäuren:</i></td>
+      </tr>
+      <tr>
+        <td>{{ .Params.carbs }}g</td>
+        <td>Kohlenhydrate:</td>
+      </tr>
+      <tr>
+        <td>{{ .Params.sugars }}g</td>
+        <td>- <i>davon Zucker:</i></td>
+      </tr>
+      <tr>
+        <td>{{ .Params.fiber }}g</td>
+        <td>Ballaststoffe:</td>
+      </tr>
+      <tr>
+        <td>{{ .Params.protein }}g</td>
+        <td>Eiweiß:</td>
+      </tr>
+      <tr>
+        <td>{{ .Params.salt }}g</td>
+        <td>Salz:</td>
+      </tr>
+    </table>
+  </div>
+</div>
 {{ end }}
