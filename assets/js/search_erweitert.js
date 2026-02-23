@@ -71,8 +71,20 @@
         return;
     }
 
+    function withQueryParam(url, key, value) {
+        try {
+            const u = new URL(url, window.location.origin);
+            u.searchParams.set(key, value);
+            return u.pathname + u.search + u.hash;
+        } catch (e) {
+            const sep = url.includes("?") ? "&" : "?";
+            return `${url}${sep}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+        }
+    }
+
     // html für produktkarte erzeugen (ich will quasi tiles mit bild, titel und read more)
     function renderCard(p) {
+        const mergedLink = withQueryParam(p.link, "q", term);
         const imgHtml = p.image
             ? `
       <div class="product-media">
@@ -87,9 +99,9 @@
       ${imgHtml}
       <div class="pa3">
         <h2 class="f3 mt2 mb3">
-          <a href="${esc(p.link)}" class="link">${esc(p.title)}</a>
+          <a href="${esc(mergedLink)}" class="link">${esc(p.title)}</a>
         </h2>
-        <a class="ba b--black-20 br2 ph2 pv1 f6 dib link" href="${esc(p.link)}">read more</a>
+        <a class="ba b--black-20 br2 ph2 pv1 f6 dib link" href="${esc(mergedLink)}">read more</a>
       </div>
     </div>
   `;

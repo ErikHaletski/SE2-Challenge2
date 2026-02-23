@@ -1,3 +1,11 @@
+(function () {
+    const qRaw = new URLSearchParams(window.location.search).get("q") || "";
+    const term = qRaw.trim().toLowerCase();
+
+    console.log("qRaw:", qRaw);
+    console.log("term:", term);
+})();
+
 function showOverview() {
     var x = document.getElementById("produkt-id");
     var nutrition = document.getElementById("nutritions-detail");
