@@ -1,0 +1,26 @@
+<header >
+	<div class="pb3-m pt5-l pb7-l {{ .Site.Params.background_color_class | compare.Default "bg-light-green" }}">
+
+		<div class="tc-l pv3 ph3 ph4-ns">
+			<h1 class="f2 f-subheadline-l fw2 b0 lh-title">
+				<span class="dark-green">eat </span><span class="light-silver">gr</span><span class="dark-green">ass.</span>
+			</h1>
+			
+			<div class="pa4-l">
+				<form action="/search" method="GET" class="mw7 center pa4 br2-ns">
+					<fieldset class="cf bn ma0 pa0">
+						<div class="">
+							<input class="f6 f5-l input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns" placeholder="Search..." type="search" name="q">
+							<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns" type="submit" value="Search">
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			{{ with .Params.description }}
+			<h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+				{{ . }}
+			</h2>
+			{{ end }}
+		</div>
+	</div>
+</header>
