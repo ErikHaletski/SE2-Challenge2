@@ -73,7 +73,7 @@
   {{- if .IsSection -}}{{- $body_classes = $body_classes | append "is-section" -}}{{- end -}}
 
   <body class="{{ delimit $body_classes " " }}">
-    {{ block "header" . }}{{ partials.Include "site-header.html" .}}{{ end }}
+    {{ block "header" . }}{{ partials.Include "site-navigation.html" .}}{{ end }}
     <main class="pb7" role="main">
       {{ block "main" . }}{{ end }}
     </main>

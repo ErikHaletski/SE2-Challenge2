@@ -1,7 +1,19 @@
 {
 	"baseURL": "https://example.org/",
 	"languageCode": "en-us",
-	"title": "My New Hugo Site",
+	"title": "eat grass.",
 	"theme": "ananke",
-	"pluralizeListTitles": false
+	"pluralizeListTitles": false,
+	"languages": {
+		"en": {
+			"contentDir": "content/en",
+			"languageName": "English",
+			"weight": 10
+		},
+		"de": {
+			"contentDir": "content/de",
+			"languageName": "German",
+			"weight": 20
+		}
+	}
 }
