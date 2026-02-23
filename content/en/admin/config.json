@@ -51,19 +51,22 @@
 			"folder": "/content/produkte",
 			"media_folder": "/static/media/produkte",
 			"create": true,
+			"i18n": true,
 			"extension": "md",
 			"format": "frontmatter",
 			"identifier_field": "product_id",
 			"fields": [
-				{	
+				{
 					 "label": "Product ID",
 					 "name": "product_id",
-					 "widget": "string"
+					 "widget": "string",
+					 "i18n": true
 				},
 				{
 					"label": "Title",
 					"name": "title",
-					"widget": "string"
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Calories",
@@ -113,7 +116,8 @@
 				{
 					"label": "best for",
 					"name": "best_for",
-					"widget": "string"
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Nutriscore",
@@ -129,7 +133,8 @@
 				{
 					"label": "Description",
 					"name": "description",
-					"widget": "string"
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Ratio",
@@ -145,7 +150,8 @@
 					"search_fields": ["label_id", "title"],
 					"display_fields": ["title"],
 					"multiple": true,
-					"required": true
+					"required": true,
+					"i18n": true
 				}
 			]
 		},
@@ -156,6 +162,7 @@
 			"folder": "/content/labels",
 			"media_folder": "/static/media/labels",
 			"create": true,
+			"i18n": true,
 			"extension": "md",
  			"format": "frontmatter",
 			"identifier_field": "label_id",
@@ -163,12 +170,14 @@
 				{
 					"label": "Label ID",
 					"name": "label_id",
-					"widget": "string"
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Title",
 					"name": "title",
-					"widget": "string"
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Image",
@@ -183,6 +192,7 @@
 			"name": "ersatzprodukte",
 			"folder": "/content/ersatzprodukte",
 			"create": true,
+			"i18n": true,
 			"extension": "md",
  			"format": "frontmatter",
 			"identifier_field": "title",
@@ -190,7 +200,8 @@
 				{
 					"label": "Title",
 					"name": "title",
-					"widget": "string"
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Search Product",
@@ -216,7 +227,8 @@
 					"label": "Hint",
 					"name": "hint",
 					"widget": "text",
-					"required": false
+					"required": false,
+					"i18n": true
 				}
 			]
 		}
