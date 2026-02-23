@@ -23,15 +23,37 @@
     <h3>Beschreibung:</h3>
     <p>{{ .Params.description }}</p>
     <ul>
-      <li><strong>Best For:</strong> {{ .Params.best_for }}</li>
-      <li><strong>Label:</strong> {{ range .Params.labels }}{{ . }} {{ end }}</li>
+      <li id="bestfor"><strong>Best For:</strong> {{ .Params.best_for }}</li>
     </ul>
   </div>
 </div>
 
+<div id="produkt-label" class="produkt-label">
+  {{ $score := .Params.nutriscore | lower }}
+  {{ $imgPath := printf "nutriscore/nutri_%s.png" $score }}
+
+  {{ with resources.Get $imgPath }}
+    <img src="{{ .RelPermalink }}" alt="Nutri-Score {{ $score }}">
+  {{ else }}
+    <span>kein Bild zum Nutriscore gefunden :C</span>
+  {{ end }}
+
+  {{ range .Params.labels }}
+    {{ $label := . | lower }}
+    {{ $imgPath := printf "labels/%s.jpg" $label }}
+
+    {{ with resources.Get $imgPath }}
+      <img src="{{ .RelPermalink }}" alt="Label {{ $label }}">
+    {{ else }}
+      <span>kein Bild für {{ $label }} gefunden :C</span>
+    {{ end }}
+  {{ end }}
+</div>
+
+
 <div id="nutritions-detail" class="nutritions-detail">
   <div class="table-wrapper">
-    <table class="nutrition-table">
+    <table class="nutrition-table bg-dark-green">
       <tr>
         <th>Nähwerte:</th>
         <th>je 100g</th>
@@ -70,7 +92,7 @@
       </tr>
     </table>
 
-    <table class="nutrition-table">
+    <table class="nutrition-table bg-dark-green">
       <tr>
         <th>je 100g</th>
         <th>Nähwerte:</th>
