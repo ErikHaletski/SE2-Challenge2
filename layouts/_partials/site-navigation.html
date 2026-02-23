@@ -1,0 +1,46 @@
+<div class="pb3-m tracked fixed w-100 {{ .Site.Params.background_color_class | compare.Default "bg-light-green" }}" id="nav-bar">
+	<nav class="ph3 ph4-ns " role="navigation">
+	  <div class="flex-l center items-center fl w-third pa2">
+		<a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-dark-green dark-green dib no-underline">
+		  {{ with resources.Get "logo.webp" }}
+			<img src="{{ .RelPermalink }}" class="mw5-ns" width="30px" height="100%" alt="{{ .Title }}" />
+		  {{ else }}
+			  <span class="dark-green">eat </span><span class="light-silver">gr</span><span class="dark-green">ass.</span>
+		  {{ end }}
+		</a>
+	  </div>
+	  <div class="flex-l fl w-third pa2 center items-center">
+		  <ul class="list dib dark-green center" style="padding:0px;">
+			  {{ with .Site.GetPage "/" }}
+			  <li class="list dib"><a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">Homepage</a></li> <span> | </span>
+			  <li class="list dib"><a class="no-underline dark-green" href="{{ .RelPermalink }}#HowTo">How To Use</a></li> <span> | </span>
+			  <li class="list dib"><a class="no-underline dark-green" href="{{ .RelPermalink }}#Mission">Our Mission</a></li>
+			  {{ end }}
+		  </ul>
+	  </div>
+	  <div class="flex-l items-center fl w-third pa2 tr">
+		  {{ if .IsTranslated }}
+		  <span class="tr w-100">{{ lang.Translate "translations" }}🌎</span>
+		  <ul class="tr {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+			  {{ range .Translations }}
+			  <li class="list tr dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+				  <a class="hover-white white-90 no-underline" href="{{ .RelPermalink }}">{{ .Lang }}</a>
+			  </li>
+			  {{ end}}
+		  </ul>
+		  {{ end }}
+		  {{ if .Site.Menus.main }}
+		  <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+			  {{ range .Site.Menus.main }}
+			  <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+				  <a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
+					  {{ .Name }}
+				  </a>
+			  </li>
+			  {{ end }}
+		  </ul>
+		  {{ end }}
+		  {{ partials.IncludeCached "social/follow.html" . }}
+	  </div>
+	</nav>
+</div>
