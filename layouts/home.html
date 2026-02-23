@@ -23,10 +23,6 @@
   {{ $show_recent_posts := site.Params.ananke.show_recent_posts }}
   {{ $section := collections.Where $.Site.RegularPages "Section" "in" $mainSections }}
   {{ $section_count := len $section }}
-  <form action="/search_erweitert/" method="GET">
-	  <input type="search" name="q" id="search-query" placeholder="Search....">
-	  <button type="submit">Search</button>
-  </form>
 
   <div class="scroll-content pa3 center w-70-l" id="HowTo">
 	  <h1 class="f1 tc-l">How To Use</h1>
