@@ -13,7 +13,7 @@ ul.navbar {
 .navbar button {
     border: 1px solid black;
     border-bottom: none;
-    background-color: rgb(53, 213, 47);
+    background-color: #9eebcf;
     padding: 0.3rem 0.6rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -21,7 +21,7 @@ ul.navbar {
 }
 
 .navbar button:hover {
-    background-color: rgb(56, 169, 71);
+    background-color: #55c99e;
 }
 
 .navbar button.active {
@@ -53,15 +53,20 @@ ul.navbar li {
     max-height: 40vh;
   }
 
-.produkt-label{
-  padding-top: 56,25%;
-  padding-left: 2rem; 
-} 
-
-.produkt-label img {
-  width: 8%;
-  height: auto;
-}
+  .produkt-label {
+    padding-left: 2rem;
+  }
+  
+  .produkt-label img.nutriscore {
+    width: 8%;
+    height: auto;
+  }
+  
+  .produkt-label img.label-img {
+    width: 4%;
+    height: auto;
+  }
+  
 
 .produkt-info ul {
     list-style: disc inside;

@@ -2,9 +2,11 @@
     const qRaw = new URLSearchParams(window.location.search).get("q") || "";
     const term = qRaw.trim().toLowerCase();
 
-    console.log("qRaw:", qRaw);
+    const compare = document.querySelector(".nutrition-compare-table");
+
     console.log("term:", term);
 })();
+
 
 function showOverview() {
     var x = document.getElementById("produkt-id");
@@ -18,6 +20,7 @@ function showOverview() {
     nutrition.style.display = "none"
     btnOverview.classList.add("active");
     btnNutrition.classList.remove("active");
+    
   }
 
 function showNutrition() {
