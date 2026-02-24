@@ -19,4 +19,3 @@ labels:
   - vegan
   - vegetarisch
 ---
-"Würzige Rohwurst, typischerweise aus Schwein/Rind."
