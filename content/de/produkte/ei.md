@@ -17,4 +17,6 @@ description: "Vielseitig beim Kochen und Backen; gute Bindung und Struktur."
 ratio: "1:1"
 labels:
   - vegetarisch
+categories:
+  - backen
 ---

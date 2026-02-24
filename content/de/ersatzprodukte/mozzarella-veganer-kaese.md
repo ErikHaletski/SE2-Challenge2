@@ -1,6 +1,6 @@
----
+_---
 title: "Mozzarella → Veganer Käse (Schmelz)"
 searchProduct: mozzarella
 substituteProduct: veganer-kaese-schmelz
 hint: "Für Pizza/Gratin: auf Schmelz-Variante achten (Stärke/Kokosöl-Basis)."
----
+---_

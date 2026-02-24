@@ -1,6 +1,6 @@
 ---
 product_id: billie-green-salami
-title: BillieGreenSalami
+title: Billie Green Salami
 calories: 407
 fats: 34
 saturated_fats: 13

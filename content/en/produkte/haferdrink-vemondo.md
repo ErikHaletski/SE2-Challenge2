@@ -10,10 +10,10 @@ fiber: 0.8
 protein: 1.0
 salt: 0.1
 image: /media/produkte/haferdrink-vermondo.png
-best_for: "Kaffee, Müsli, Backen"
+best_for: "Coffee, Cereals, Baking"
 nutriscore: A
 texture: 3
-description: "Pflanzliche Milchalternative auf Haferbasis, leicht süßlich."
+description: "Vegan alternative to milk. Based on oats, slightly sweet."
 ratio: "1:1"
 labels:
   - vegan

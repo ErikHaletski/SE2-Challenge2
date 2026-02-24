@@ -1,4 +1,4 @@
 ---
 label_id: vegan
-title: Vegan
+title: vegan
 ---

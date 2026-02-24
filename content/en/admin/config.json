@@ -3,47 +3,47 @@
 		"structure": "multiple_folders",
 		"locales": ["en", "de"]
 	},
-    "backend": {
-        "name": "github",
-        "repo": "ErikHaletski/SE2-Challenge2",
-		"branch": "SE2-29-ui-detailansicht-ubersicht"
-    },
-    "media_folder": "/static/media",
-    "public_folder": "/media",
+	"backend": {
+		"name": "github",
+		"repo": "ErikHaletski/SE2-Challenge2",
+		"branch": "SE2-29-ui-searchresult"
+	},
+	"media_folder": "/static/media",
+	"public_folder": "/media",
 
-    "collections": [
-        {
-            "name": "blog",
-            "label": "Blog",
-            "folder": "/content/blog",
+	"collections": [
+		{
+			"name": "blog",
+			"label": "Blog",
+			"folder": "/content/blog",
 			"i18n": true,
-            "fields": [
-                {
-                    "label": "Title",
-                    "name": "title",
-                    "widget": "string",
-					"i18n": true
-                },
-                {
-                    "label": "Body",
-                    "name": "body",
-                    "widget": "markdown",
-					"i18n": true
-                },
-				{ 
-					"label": "Description",
-					"name": "description", 
+			"fields": [
+				{
+					"label": "Title",
+					"name": "title",
 					"widget": "string",
 					"i18n": true
 				},
-				{ 
-					"label": "Publish Date", 
-					"name": "date", 
+				{
+					"label": "Body",
+					"name": "body",
+					"widget": "markdown",
+					"i18n": true
+				},
+				{
+					"label": "Description",
+					"name": "description",
+					"widget": "string",
+					"i18n": true
+				},
+				{
+					"label": "Publish Date",
+					"name": "date",
 					"widget": "datetime",
 					"i18n": "duplicate"
 				}
-            ]
-        },
+			]
+		},
 
 		{
 			"label": "Produkte",
@@ -57,10 +57,10 @@
 			"identifier_field": "product_id",
 			"fields": [
 				{
-					 "label": "Product ID",
-					 "name": "product_id",
-					 "widget": "string",
-					 "i18n": true
+					"label": "Product ID",
+					"name": "product_id",
+					"widget": "string",
+					"i18n": true
 				},
 				{
 					"label": "Title",
@@ -79,9 +79,9 @@
 					"widget": "number"
 				},
 				{
-					 "label": "Saturated Fats",
-					 "name": "saturated_fats",
-					 "widget": "number"
+					"label": "Saturated Fats",
+					"name": "saturated_fats",
+					"widget": "number"
 				},
 				{
 					"label": "Carbs",
@@ -152,7 +152,20 @@
 					"multiple": true,
 					"required": true,
 					"i18n": true
+				},
+				{
+					"label": "Categories",
+					"name": "categories",
+					"widget": "relation",
+					"collection": "categories",
+					"value_field": "category_id",
+					"search_fields": ["category_id", "title"],
+					"display_fields": ["title"],
+					"multiple": true,
+					"required": true,
+					"i18n": true
 				}
+
 			]
 		},
 
@@ -164,7 +177,7 @@
 			"create": true,
 			"i18n": true,
 			"extension": "md",
- 			"format": "frontmatter",
+			"format": "frontmatter",
 			"identifier_field": "label_id",
 			"fields": [
 				{
@@ -186,6 +199,38 @@
 				}
 			]
 		},
+		{
+			"label": "Categories",
+			"name": "categories",
+			"folder": "/content/categories",
+			"media_folder": "/static/media/categories",
+			"create": true,
+			"i18n": true,
+			"required": false,
+			"extension": "md",
+			"format": "frontmatter",
+			"identifier_field": "category_id",
+			"fields": [
+				{
+					"label": "Category ID",
+					"name": "category_id",
+					"widget": "string",
+					"i18n": true
+				},
+				{
+					"label": "Title",
+					"name": "title",
+					"widget": "string",
+					"i18n": true
+				},
+				{
+					"label": "Image",
+					"name": "image",
+					"widget": "image"
+				}
+			]
+		},
+
 
 		{
 			"label": "Ersatzprodukte",
@@ -194,7 +239,7 @@
 			"create": true,
 			"i18n": true,
 			"extension": "md",
- 			"format": "frontmatter",
+			"format": "frontmatter",
 			"identifier_field": "title",
 			"fields": [
 				{
@@ -232,5 +277,5 @@
 				}
 			]
 		}
-    ]
+	]
 }

@@ -1,4 +1,4 @@
 ---
 label_id: vegetarisch
-title: Vegetarisch
+title: vegetarian
 ---
