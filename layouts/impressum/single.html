@@ -13,7 +13,7 @@
           </svg>
         </div>
         <div class="impressum-content">
-          <p class="ma0">Schreibe uns eine Nachricht an <strong>vegal@mock.de</strong></p>
+          <p class="ma0"> {{ .Param "contact_email" }} <strong>vegal@mock.de</strong></p>
         </div>
       </div>
 
@@ -25,7 +25,7 @@
           </svg>
         </div>
         <div class="impressum-content">
-          <p class="ma0">Ruf uns an unter <strong>+49 40 123 45 67</strong></p>
+          <p class="ma0">{{ .Param "contact_phone" }} <strong>+49 40 123 45 67</strong></p>
         </div>
       </div>
 
@@ -40,12 +40,12 @@
           </svg>
         </div>
         <div class="impressum-content">
-          <p class="ma0">Unser Team: 
-            <br>CEO: Diane 
-            <br>Publisher: Nino
-            <br>Customer Relations: Marius :))))))))))
-            <br>Öffentlichkeitsarbeit: Wolfgang
-            <br>Gute Seele: Lena
+          <p class="ma0">{{ .Param "our_team" }}: 
+            <br>{{ .Param "ceo" }}: Diane 
+            <br>{{ .Param "publisher" }}: Nino
+            <br>{{ .Param "customer_relations" }}: Marius :))))))))))
+            <br>{{ .Param "public_relations" }}: Wolfgang
+            <br>{{ .Param "good_soul" }}: Lena
         
         </p>
         </div>
