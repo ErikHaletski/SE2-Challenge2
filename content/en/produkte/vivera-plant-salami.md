@@ -14,7 +14,7 @@ image: /media/produkte/vivera-plant-salami.png
 best_for: "Pizza, Wraps, Brot"
 nutriscore: D
 texture: 6
-description: "Pflanzliche Salami-Alternative mit fester Struktur und leichter Pfeffernote."
+description: "Vegan salami. Slight pepper note, firm structure."
 ratio: "1:1"
 labels:
   - vegan

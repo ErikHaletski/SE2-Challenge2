@@ -17,4 +17,7 @@ description: "Würzige Rohwurst, typischerweise aus Schwein/Rind."
 ratio: "1:1"
 labels:
   - omnivor
+categories:
+  - fleisch
+  - aufschnitt
 ---

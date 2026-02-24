@@ -1,4 +1,4 @@
 ---
 label_id: omnivor
-title: Omnivor
+title: omnivorous
 ---

@@ -1,6 +1,6 @@
 ---
 product_id: ei
-title: Ei
+title: Egg
 calories: 143
 fats: 9.5
 saturated_fats: 3.1
@@ -10,10 +10,10 @@ fiber: 0
 protein: 13
 salt: 0.4
 image: /media/produkte/ei.png
-best_for: "Backen, Frühstück, Bindung"
+best_for: "Baking, Breakfast, Thickener"
 nutriscore: A
 texture: 5
-description: "Vielseitig beim Kochen und Backen; gute Bindung und Struktur."
+description: "Versatily for cooking and baking; good thickener and nice structure."
 ratio: "1:1"
 labels:
   - vegetarisch
