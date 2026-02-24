@@ -1,0 +1,110 @@
+{{ define "main" }}
+<article class="pa3 pa4-ns nested-copy-line-height">
+  <section class="w-100 mw8 center">
+    <h1 class="mb4" >Vegal (GmbH & Co. KG)</h1>
+    
+    <div class="impressum-container">
+      <!-- Nachricht -->
+      <div class="impressum-item mb4">
+        <div class="impressum-icon-wrapper">
+          <svg class="impressum-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+            <path d="m22 7-10 5L2 7"></path>
+          </svg>
+        </div>
+        <div class="impressum-content">
+          <p class="ma0">Schreibe uns eine Nachricht an <strong>vegal@mock.de</strong></p>
+        </div>
+      </div>
+
+      <!-- Telefon -->
+      <div class="impressum-item mb4">
+        <div class="impressum-icon-wrapper">
+          <svg class="impressum-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+        <div class="impressum-content">
+          <p class="ma0">Ruf uns an unter <strong>+49 40 123 45 67</strong></p>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="impressum-item">
+        <div class="impressum-icon-wrapper">
+          <svg class="impressum-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="impressum-content">
+          <p class="ma0">Unser Team: 
+            <br>CEO: Diane 
+            <br>Publisher: Nino
+            <br>Customer Relations: Marius :))))))))))
+            <br>Öffentlichkeitsarbeit: Wolfgang
+            <br>Gute Seele: Lena
+        
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+
+<style>
+  .impressum-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .impressum-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .impressum-icon-wrapper {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .impressum-icon {
+    width: 100%;
+    height: 100%;
+    color: #1f2937;
+  }
+
+  .impressum-content {
+    flex-grow: 1;
+    padding-top: 0.25rem;
+  }
+
+  .impressum-content p {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: #374151;
+  }
+
+  @media (max-width: 768px) {
+    .impressum-item {
+      gap: 1rem;
+    }
+
+    .impressum-icon-wrapper {
+      width: 32px;
+      height: 32px;
+    }
+
+    .impressum-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+{{ end }}

@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="pa3 pa4-ns nested-copy-line-height">
+  <section class="w-100 mw8 center">
+    <h1 class="mb4">{{ .Title }}</h1>
+    
+    <div class="datenschutz-content">
+      <h2>1. Datenschutz auf einen Blick</h2>
+      <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+
+      <h2>2. Allgemeine Hinweise</h2>
+      <p>Die nachfolgende Erklärung gibt Ihnen einen Überblick darüber, wie wir den Schutz Ihrer personenbezogenen Daten gewährleisten und welche Art von Daten zu welchem Zweck verarbeitet werden.</p>
+
+      <h2>3. Betroffenenrechte</h2>
+      <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
+
+      <h2>4. Kontakt</h2>
+      <p>Falls Sie Fragen zum Datenschutz haben, können Sie uns jederzeit kontaktieren. Alle Kontaktinformationen finden Sie im <a href="{{ .Site.BaseURL }}impressum/">Impressum</a>.</p>
+    </div>
+  </section>
+</article>
+
+<style>
+  .datenschutz-content {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .datenschutz-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .datenschutz-content p {
+    margin-bottom: 1rem;
+  }
+
+  .datenschutz-content a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .datenschutz-content a:hover {
+    text-decoration: underline;
+  }
+</style>
+{{ end }}

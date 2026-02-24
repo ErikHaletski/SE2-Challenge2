@@ -1,0 +1,13 @@
+
+<footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between items-center flex-wrap">
+    <div class="f4 fw4 white-70 pv2 ph3">
+      <a class="hover-white white-70 no-underline" href="{{ .Site.Home.Permalink }}">Home</a>
+      <span class="white-70 mh2">|</span>
+      <a class="hover-white white-70 no-underline" href="{{ .Site.BaseURL }}impressum/">Impressum</a>
+      <span class="white-70 mh2">|</span>
+      <a class="hover-white white-70 no-underline" href="{{ .Site.BaseURL }}datenschutz/">Datenschutz</a>
+    </div>
+    <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
+  </div>
+</footer>

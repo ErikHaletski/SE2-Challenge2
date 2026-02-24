@@ -24,7 +24,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js" integrity="sha512-19TrqSGVSwaC2IDGHrD+tAkX59/w5cXy0BHDVwn7OJQXxavORhFSFM7DOO9soXKuo8O7gGNHiG9R2vFrXRBcTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
 		const pages = new Map();
-		{{ with .Site.GetPage "/blog" }}
+		{{ with .Site.GetPage "/produkte" }}
 			{{ range .Pages }}
 				pages.set("{{ .RelPermalink }}", "{{ .Title }}".toLowerCase());
 			{{ end }}
