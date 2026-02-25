@@ -72,9 +72,9 @@
 
   {{- if .IsSection -}}{{- $body_classes = $body_classes | append "is-section" -}}{{- end -}}
 
-  <body class="{{ delimit $body_classes " " }}">
+  <body class="{{ delimit $body_classes " " }} flex flex-column min-vh-100">
     {{ block "header" . }}{{ partials.Include "site-navigation.html" .}}{{ end }}
-    <main class="pb7" role="main">
+    <main class="pb7 pa6 flex-auto" role="main">
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partials.IncludeCached "home-footer.html" . }}{{ end }}
