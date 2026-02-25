@@ -1,69 +1,76 @@
-#search-results{
+/* --- Results grid --- */
+#search-results {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
-    /*grid-template-columns: repeat(auto-fit, minmax(220px, 360px));*/
-    /*grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));*/
     gap: 24px;
     align-items: start;
     justify-content: center;
 }
 
-#search-results a:link {
-    color: green;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-#search-results a:visited {
-    color: green;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-#search-results a:hover {
-    color: green;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-#search-results a:active {
-    color: darkgreen;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.product-card{
+/* --- Product cards --- */
+.product-card {
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 1px 2px rgba(0,0,0,.06);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 
     display: flex;
     flex-direction: column;
     min-width: 0;
 }
 
-.product-media{
+.product-media {
     width: 100%;
     height: 400px;
     background: #f4f4f4;
     overflow: hidden;
 }
 
-.product-media img{
+.product-media img {
     width: 100%;
     height: 100%;
     object-fit: scale-down;
     display: block;
 }
 
-.product-card .pa3{
+/* Title container */
+.product-card .pa3 {
     flex: 1;
     min-width: 0;
+    text-align: center;
 }
 
-.product-card h2{
+.product-card h2 {
     margin: 0.5rem 0 1rem;
     line-height: 1.2;
     overflow-wrap: anywhere;
+}
+
+/* --- Button --- */
+.eg-search-btn {
+    background-color: #2f473e;
+}
+
+.eg-search-btn:hover {
+    background-color: #000;
+}
+
+/* --- Product title link: match button color in all states --- */
+#search-results a.eg-product-title:link,
+#search-results a.eg-product-title:visited {
+    color: #2f473e;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#search-results a.eg-product-title:hover {
+    color: #000;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+#search-results a.eg-product-title:active {
+    color: #000;
+    background-color: transparent;
+    text-decoration: underline;
 }

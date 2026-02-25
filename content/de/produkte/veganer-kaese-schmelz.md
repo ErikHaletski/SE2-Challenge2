@@ -1,5 +1,5 @@
 ---
-product_id: veganer-kaese-blauschimmel
+product_id: veganer-kaese-schmelz
 title: "Veganer Käse (Blaumschimmel)"
 calories: 280
 fats: 22

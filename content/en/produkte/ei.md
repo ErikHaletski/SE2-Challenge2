@@ -17,4 +17,6 @@ description: "Versatily for cooking and baking; good thickener and nice structur
 ratio: "1:1"
 labels:
   - vegetarisch
+categories:
+  - backen
 ---
