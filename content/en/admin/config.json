@@ -6,7 +6,7 @@
     "backend": {
         "name": "github",
         "repo": "ErikHaletski/SE2-Challenge2",
-		"branch": "SE2-29-ui-detailansicht-ubersicht"
+		"branch": "SE2-39-naherwertetabell"
     },
     "media_folder": "/static/media",
     "public_folder": "/media",

@@ -1,12 +1,12 @@
 ---
 product_id: salami
 title: Salami
-calories: 407
+calories: 402
 fats: 34
 saturated_fats: 13
 carbs: 1.5
 sugars: 0.8
-fiber: 0
+fiber: 2
 protein: 22
 salt: 4.2
 image: /media/produkte/salami.png
