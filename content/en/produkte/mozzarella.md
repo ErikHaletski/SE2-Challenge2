@@ -1,6 +1,6 @@
 ---
 product_id: mozzarella
-title: mozzarella
+title: Mozzarella
 calories: 250
 fats: 19
 saturated_fats: 12
@@ -17,4 +17,6 @@ description: "Mild cheese with good melting capabilites."
 ratio: "1:1"
 labels:
   - vegetarisch
+categories:
+  - milchprodukte
 ---

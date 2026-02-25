@@ -9,6 +9,7 @@
     <button type="submit" class="pa2 ml2-ns mt2 mt0-ns">Search</button>
   </form>
 
+  <div id="search-info"></div>
   <section id="search-results" class="mt5"></section>
   <div class="search-loading tc mid-gray f4 mt4">Loading...</div>
 
@@ -53,7 +54,7 @@
     {{- end -}}
     };
 
-    // Relations: searchProduct -> substituteProduct + hint
+    // Relations: searchProduct -> substituteProduct
     window.SEARCH_RELS = [
       {{- $rfirst := true -}}
     {{- range (where .Site.RegularPages "Section" "ersatzprodukte") -}}
@@ -65,7 +66,6 @@
     {{- dict
       "searchProduct" $sp
       "substituteProduct" $sub
-      "hint" (default "" .Params.hint)
     | jsonify | safeJS -}}
     {{- end -}}
     {{- end -}}
