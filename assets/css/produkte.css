@@ -1,13 +1,12 @@
 h1 {
-    padding: 1rem 2rem; 
+    padding: 1rem 2rem;
 }
 
 ul.navbar {
     list-style: none;
     display: flex;
-    padding-left: 2rem; 
+    padding-left: 2rem;
     margin-bottom: 0;
-   
 }
 
 .navbar button {
@@ -29,8 +28,7 @@ ul.navbar {
     color: white;
     transform: translateY(1px);
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-  }
-  
+}
 
 ul.navbar li {
     display: inline;
@@ -40,33 +38,32 @@ ul.navbar li {
     display: flex;
     gap: 2rem;
     padding-left: 2rem;
-  }
-  
-  .produkt-image {
+}
+
+.produkt-image {
     flex: 0 0 250px;
-  }
-  
-  .produkt-image img {
+}
+
+.produkt-image img {
     width: 100%;
     height: auto;
     border: 1px solid black;
     max-height: 40vh;
-  }
+}
 
-  .produkt-label {
+.produkt-label {
     padding-left: 2rem;
-  }
-  
-  .produkt-label img.nutriscore {
+}
+
+.produkt-label img.nutriscore {
     width: 8%;
     height: auto;
-  }
-  
-  .produkt-label img.label-img {
+}
+
+.produkt-label img.label-img {
     width: 4%;
     height: auto;
-  }
-  
+}
 
 .produkt-info ul {
     list-style: disc inside;
@@ -75,35 +72,44 @@ ul.navbar li {
 
 .nutritions-detail {
     display: none;
-    padding-left: 2rem; 
+    padding-left: 2rem;
 }
 
 .table-wrapper {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-  }
-  
-  .nutrition-table {
-    flex: 1 1 300px;
-    max-width: 400px;
+}
+
+.nutrition-table,
+.nutrition-compare-table {
+    flex: 1 1 320px;
+    max-width: 420px;
     border-collapse: collapse;
     width: 100%;
-  }
-  .nutrition-table th,
-  .nutrition-table td {
+}
+
+.nutrition-table th,
+.nutrition-table td,
+.nutrition-compare-table th,
+.nutrition-compare-table td {
     border: 1px solid #ccc;
     padding: 0.5rem 0.75rem;
     text-align: left;
-  }
-  
-.nutrition-table th {
+}
+
+.nutrition-table th,
+.nutrition-compare-table th {
     background: #bbb9b9;
     font-weight: bold;
 }
 
-.nutrition-table tr:nth-child(even) {
-  background-color: white;
-
+.nutrition-table tr:nth-child(even),
+.nutrition-compare-table tr:nth-child(even) {
+    background-color: white;
 }
-    
+
+.search-product-note {
+    margin-top: 1rem;
+    color: #444;
+}
