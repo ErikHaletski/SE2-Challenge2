@@ -1,6 +1,32 @@
+<style>
+.dropdown {
+	position: relative;
+
+}
+
+.dropdown-content {
+	top: 100%;
+	left: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: 
+		opacity 0.3s ease,
+		visibility 0s linear 0.3s;
+
+}
+
+.dropdown:hover .dropdown-content {
+visibility: visible;
+opacity: 1;
+transition:
+	opacity 0.3s ease,
+	visibility 0s linear 0s;
+}
+
+</style>
 <div class="pb3-m tracked fixed w-100 {{ .Site.Params.background_color_class | compare.Default "bg-light-green" }}" id="nav-bar">
 	<nav class="ph3 ph4-ns " role="navigation">
-	  <div class="flex-l center items-center fl w-third pa2">
+	  <div class="flex-l center items-center fl w-25 pa2">
 		<a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-dark-green dark-green dib no-underline">
 		  {{ with resources.Get "logo.png" }}
 			<img src="{{ .RelPermalink }}" class="mw5-ns" width="30px" height="100%" alt="{{ .Title }}" />
@@ -9,16 +35,27 @@
 		  {{ end }}
 		</a>
 	  </div>
-	  <div class="flex-l fl w-third pa2 center items-center">
-		  <ul class="list dib dark-green center" style="padding:0px;">
+	  <div class="flex-l fl w-50 pa2 center items-center">
+		  <div class="dib dark-green center" style="padding:0px;">
 			  {{ with .Site.GetPage "/" }}
-			  <li class="list dib"><a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">Homepage</a></li> <span> | </span>
-			  <li class="list dib"><a class="no-underline dark-green" href="{{ .RelPermalink }}#HowTo">How To Use</a></li> <span> | </span>
-			  <li class="list dib"><a class="no-underline dark-green" href="{{ .RelPermalink }}#Mission">Our Mission</a></li>
+			  <a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">Homepage</a> <span> | </span>
+			  <a class="no-underline dark-green" href="{{ .RelPermalink }}#HowTo">How To Use</a> <span> | </span>
+			  <a class="no-underline dark-green" href="{{ .RelPermalink }}#Mission">Our Mission</a> <span> | </span>
 			  {{ end }}
-		  </ul>
+			  <span class="dropdown">
+				  <span class="f6 link dim br1 ba ph3 pv2 mb2 dib black">Kategorien</span>
+				  <span class="dropdown-content">
+					  <form action="/search_erweitert" method="GET" class="mw7 center br2-ns">
+						  <span class="">
+							  <input class="w-100" placeholder=""  name="c" type="hidden" value="Backen">
+							  <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Backen">
+						  </span>
+					  </form>
+				  </span>
+			  </span>
+		  </div>
 	  </div>
-	  <div class="flex-l items-center fl w-third pa2 tr">
+	  <div class="flex-l items-center fl w-25 pa2 tr">
 		  {{ if .IsTranslated }}
 		  <span class="tr w-100">{{ lang.Translate "translations" }}🌎</span>
 		  <ul class="tr {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">

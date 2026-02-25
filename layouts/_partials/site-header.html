@@ -3,6 +3,10 @@
 
 		<div class="tc-l pv3 ph3 ph4-ns">
 			<h1 class="f2 f-subheadline-l fw2 b0 lh-title">
+
+		  {{ with resources.Get "logo.png" }}
+			<img src="{{ .RelPermalink }}" class="mw5-ns" width="100px" height="100%" alt="{{ .Title }}" />
+		  {{ end }}
 				<span class="dark-green">eat </span><span class="light-silver">gr</span><span class="dark-green">ass.</span>
 			</h1>
 			
