@@ -1,6 +1,6 @@
 ---
 product_id: ruegenwalder-vegane-salami
-title: RügenwalderVeganeSalami
+title: Vegane Mühlen Salami
 calories: 372
 fats: 33
 saturated_fats: 12
@@ -10,10 +10,10 @@ fiber: 1.1
 protein: 16
 salt: 3.8
 image: /media/produkte/ruegenwalder-vegane-salami.png
-best_for: "Pizza, Brot, Sandwich"
+best_for: "Pizza, Bread, Sandwich"
 nutriscore: E
 texture: 7
-description: "Vegane Salami auf Basis von Pflanzenfetten und Protein, rauchig-würzig."
+description: "Vegan salami based on vegetable fat and protein, smokey stile."
 ratio: "1:1"
 labels:
   - vegan

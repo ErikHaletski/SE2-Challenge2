@@ -10,11 +10,14 @@ fiber: 0
 protein: 22
 salt: 4.2
 image: /media/produkte/salami.png
-best_for: "Pizza, Brotzeit"
+best_for: "Pizza, Bread"
 nutriscore: D
 texture: 8
-description: "Würzige Rohwurst, typischerweise aus Schwein/Rind."
+description: "Savory raw sausage, typically made from pork/beef."
 ratio: "1:1"
 labels:
   - omnivor
+categories:
+  - fleisch
+  - aufschnitt
 ---

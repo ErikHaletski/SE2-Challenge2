@@ -7,6 +7,31 @@
     align-items: start;
     justify-content: center;
 }
+
+#search-results a:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#search-results a:visited {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#search-results a:hover {
+    color: green;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+#search-results a:active {
+    color: darkgreen;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
 .product-card{
     background: #fff;
     border-radius: 10px;

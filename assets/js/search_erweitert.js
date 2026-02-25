@@ -22,55 +22,6 @@
             .replaceAll("'", "&#039;");
     }
 
-    const qRaw = param("q") || "";
-    const term = qRaw.trim().toLowerCase();
-
-    const loading = document.querySelector(".search-loading");
-    const resultsEl = document.getElementById("search-results");
-    const queryInput = document.getElementById("search-query");
-
-    // befüllen der searchbar (mit der ursprünglichen eingabe)
-    if (queryInput) {
-        queryInput.value = qRaw;
-        queryInput.setAttribute("placeholder", term || "Search…");
-    }
-
-    // gesetzt durch html
-    // searchproducts = produktdaten keyed durch product_id
-    // searchrels = liste aller beziehungen (ersatzprodukte)
-    const PRODUCTS = window.SEARCH_PRODUCTS || {}; // { id: {id,title,link,image,description,ratio} }
-    const RELS = window.SEARCH_RELS || [];         // [{searchProduct, substituteProduct, hint}]
-
-    if (!resultsEl) {
-        hide(loading);
-        return;
-    }
-
-    if (!term) {
-        resultsEl.innerHTML = "";
-        hide(loading);
-        return;
-    }
-
-    // passende ersatzprodukte finden
-    // gibt nur zurück, wo searchProduct = term
-    const rels = RELS.filter(r => (r.searchProduct || "").toLowerCase() === term);
-
-    // die substitude ids und deren beschreibung/hinweise sammeln
-    const ids = [];
-    for (const r of rels) {
-        const sub = (r.substituteProduct || "").toLowerCase();
-        if (!sub) continue;
-        if (!ids.includes(sub)) ids.push(sub);
-    }
-
-    // wenn keine ersatzprodukte zum term existieren -> zeige hardcoded value an
-    if (ids.length === 0) {
-        resultsEl.innerHTML = `<p class="tc mid-gray f4 mt5">No substitutes found for “${esc(term)}”.</p>`;
-        hide(loading);
-        return;
-    }
-
     function withQueryParam(url, key, value) {
         try {
             const u = new URL(url, window.location.origin);
@@ -82,40 +33,121 @@
         }
     }
 
-    // html für produktkarte erzeugen (ich will quasi tiles mit bild, titel und read more)
-    function renderCard(p) {
-        const mergedLink = withQueryParam(p.link, "q", term);
+    // Parameter je nach Modus
+    const qRaw = param("q") || "";
+    const cRaw = param("c") || "";
+
+    const termQ = qRaw.trim().toLowerCase();
+    const termC = cRaw.trim().toLowerCase();
+
+    // Priorität: q > c
+    const mode = termQ ? "q" : (termC ? "c" : "none");
+
+    const loading = document.querySelector(".search-loading");
+    const resultsEl = document.getElementById("search-results");
+    const queryInput = document.getElementById("search-query");
+
+    // befüllen der searchbar (mit der ursprünglichen eingabe)
+    // nur sinnvoll im q-mode
+    if (queryInput) {
+        queryInput.value = qRaw;
+        queryInput.setAttribute("placeholder", termQ || "Search…");
+    }
+
+    // gesetzt durch html
+    // searchproducts = produktdaten keyed durch product_id
+    // searchrels = liste aller beziehungen (ersatzprodukte)
+    const PRODUCTS = window.SEARCH_PRODUCTS || {};
+    const RELS = window.SEARCH_RELS || [];
+    const SEARCH_PAGE = window.SEARCH_PAGE || window.location.pathname;
+
+    if (!resultsEl) {
+        hide(loading);
+        return;
+    }
+
+    if (mode === "none") {
+        resultsEl.innerHTML = "";
+        hide(loading);
+        return;
+    }
+
+    function renderCard(p, linkOverride) {
+        const link = linkOverride || p.link;
         const imgHtml = p.image
             ? `
-      <div class="product-media">
-        <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">
-      </div>`
+        <div class="product-media">
+          <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">
+        </div>`
             : `
-      <div class="product-media product-media--placeholder"></div>
-    `;
+        <div class="product-media product-media--placeholder"></div>
+      `;
 
         return `
-    <div class="product-card">
-      ${imgHtml}
-      <div class="pa3">
-        <h2 class="f3 mt2 mb3">
-          <a href="${esc(mergedLink)}" class="link">${esc(p.title)}</a>
-        </h2>
-        <a class="ba b--black-20 br2 ph2 pv1 f6 dib link" href="${esc(mergedLink)}">read more</a>
+      <div class="product-card">
+        ${imgHtml}
+        <div class="pa3">
+          <h2 class="f3 mt2 mb3">
+            <a href="${esc(link)}" class="link">${esc(p.title)}</a>
+          </h2>
+        </div>
       </div>
-    </div>
-  `;
+    `;
     }
 
-    // für jedes ersatzprodukt: produktobjekt aus products und erzeuge htmlkarte und pushe in cards
-    const cards = [];
-    for (const id of ids) {
-        const p = PRODUCTS[id];
-        if (!p) continue;
-        cards.push(renderCard(p));
+    if (mode === "q") {
+        const rels = RELS.filter(r => (r.searchProduct || "").toLowerCase() === termQ);
+
+        const ids = [];
+        for (const r of rels) {
+            const sub = (r.substituteProduct || "").toLowerCase();
+            if (!sub) continue;
+            if (!ids.includes(sub)) ids.push(sub);
+        }
+
+        if (ids.length === 0) {
+            resultsEl.innerHTML = `<p class="tc mid-gray f4 mt5">No substitutes found for “${esc(termQ)}”.</p>`;
+            hide(loading);
+            return;
+        }
+
+        const cards = [];
+        for (const id of ids) {
+            const p = PRODUCTS[id];
+            if (!p) continue;
+
+            const mergedLink = withQueryParam(p.link, "q", termQ);
+            cards.push(renderCard(p, mergedLink));
+        }
+
+        resultsEl.innerHTML = cards.join("\n");
+        hide(loading);
+        return;
     }
 
-    // schreiben der karten in html-string, string wird in search-results eingesetzt
-    resultsEl.innerHTML = cards.join("\n");
-    hide(loading);
+    if (mode === "c") {
+        const all = Object.values(PRODUCTS);
+
+        const matches = all.filter(p => {
+            const cats = Array.isArray(p.categories) ? p.categories : [];
+            return cats.map(x => String(x).toLowerCase()).includes(termC);
+        });
+
+        if (matches.length === 0) {
+            resultsEl.innerHTML = `<p class="tc mid-gray f4 mt5">No products found in category “${esc(termC)}”.</p>`;
+            hide(loading);
+            return;
+        }
+
+        matches.sort((a, b) => String(a.title).localeCompare(String(b.title)));
+
+        const cards = matches.map(p => {
+            // Klick startet q-search (SEARCH_PAGE?q=<product_id>)
+            const linkToQ = withQueryParam(SEARCH_PAGE, "q", p.id);
+            return renderCard(p, linkToQ);
+        });
+
+        resultsEl.innerHTML = cards.join("\n");
+        hide(loading);
+    }
 })();

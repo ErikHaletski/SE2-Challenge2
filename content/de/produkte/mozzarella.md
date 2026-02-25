@@ -17,4 +17,6 @@ description: "Milder Käse mit guter Schmelzeigenschaft."
 ratio: "1:1"
 labels:
   - vegetarisch
+categories:
+  - milchprodukte
 ---

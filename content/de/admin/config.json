@@ -152,7 +152,20 @@
 					"multiple": true,
 					"required": true,
 					"i18n": true
+				},
+				{
+					"label": "Categories",
+					"name": "categories",
+					"widget": "relation",
+					"collection": "categories",
+					"value_field": "category_id",
+					"search_fields": ["category_id", "title"],
+					"display_fields": ["title"],
+					"multiple": true,
+					"required": true,
+					"i18n": true
 				}
+
 			]
 		},
 
@@ -186,6 +199,38 @@
 				}
 			]
 		},
+		{
+			"label": "Categories",
+			"name": "categories",
+			"folder": "/content/categories",
+			"media_folder": "/static/media/categories",
+			"create": true,
+			"i18n": true,
+			"required": false,
+			"extension": "md",
+			"format": "frontmatter",
+			"identifier_field": "category_id",
+			"fields": [
+				{
+					"label": "Category ID",
+					"name": "category_id",
+					"widget": "string",
+					"i18n": true
+				},
+				{
+					"label": "Title",
+					"name": "title",
+					"widget": "string",
+					"i18n": true
+				},
+				{
+					"label": "Image",
+					"name": "image",
+					"widget": "image"
+				}
+			]
+		},
+
 
 		{
 			"label": "Ersatzprodukte",

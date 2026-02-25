@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="pa3 pa4-ns nested-copy-line-height">
+  <section class="w-100 mw8 center">
+    <h1 class="mb4">{{ .Title }}</h1>
+    
+    <div class="datenschutz-content">
+      <h2>1. {{ .Param "title_para_1" }}</h2>
+      <p>{{ .Param "content_para_1" }}</p>
+
+      <h2>2. {{ .Param "title_para_2" }}</h2>
+      <p>{{ .Param "content_para_2" }}</p>
+
+      <h2>3. {{ .Param "title_para_3" }}</h2>
+      <p>{{ .Param "content_para_3" }}</p>
+
+      <h2>4. {{ .Param "title_para_4" }}</h2>
+      <p>{{ .Param "content_para_4" }} <a href="{{ .Site.BaseURL }}impressum/">{{ .Param "legal_notice" }}</a>.</p>
+    </div>
+  </section>
+</article>
+
+<style>
+  .datenschutz-content {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .datenschutz-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .datenschutz-content p {
+    margin-bottom: 1rem;
+  }
+
+  .datenschutz-content a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .datenschutz-content a:hover {
+    text-decoration: underline;
+  }
+</style>
+{{ end }}
