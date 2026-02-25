@@ -1,14 +1,14 @@
 ---
 product_id: billie-green-salami
 title: BillieGreenSalami
-calories: 407
-fats: 34
-saturated_fats: 13
-carbs: 1.5
-sugars: 0.8
+calories: 207
+fats: 24
+saturated_fats: 23
+carbs: 2.5
+sugars: 1.8
 fiber: 0
-protein: 22
-salt: 4.2
+protein: 12
+salt: 2.2
 image: /media/produkte/billie-green-salami.png
 best_for: "Pizza, Brotzeit"
 nutriscore: E
