@@ -1,6 +1,5 @@
 ---
-title: "Search (erweitert)"
-layout: "search_erweitert"
+title: search_erweitert
 type: search_erweitert
 multiple_products: "Multiple products found that match your search. Please select one."
 no_substitutes_for: "No substitutes found for “{term}”."
@@ -11,4 +10,3 @@ search_placeholder: "Search…"
 search_button: "Search"
 loading: "Loading…"
 ---
-

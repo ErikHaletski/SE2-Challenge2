@@ -110,7 +110,12 @@
         const relCandidates = relSearchKeys.map(key => {
             const p = products?.[key];
             const title = p && p.title ? String(p.title) : "";
-            const tokens = new Set(tokenize(normalizeText([key, title].filter(Boolean).join(" "))));
+            const aliases = Array.isArray(p?.aliases) ? p.aliases.map(x => String(x)) : [];
+            const tokens = new Set(
+                tokenize(
+                    normalizeText([key, title, ...aliases].filter(Boolean).join(" "))
+                )
+            );
             const norm = Array.from(tokens).join(" ");
             return { key, title, norm };
         });

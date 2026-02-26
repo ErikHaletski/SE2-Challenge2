@@ -4,7 +4,6 @@
   {{- .Content -}}
   </section>
 
-  <!-- Searchbar styled like homepage (site-header.html) -->
   <div class="pa4-l">
     <form action="{{ .RelPermalink }}" method="GET" class="mw7 center pa4 br2-ns">
       <fieldset class="cf bn ma0 pa0">
@@ -12,14 +11,14 @@
           <input
                   id="search-query"
                   class="f6 f5-l input-reset ba bw1 b--light-green br-0 fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns"
-                  placeholder="Search..."
+                  placeholder="{{ .Param "search_placeholder" | default "Search..." }}"
                   type="search"
                   name="q"
           >
           <input
                   class="f6 f5-l button-reset fl pv3 tc ba bw1 b--light-green bl-0 bg-animate eg-search-btn hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
                   type="submit"
-                  value="Search"
+                  value="{{ .Param "search_button" | default "Search" }}"
           >
         </div>
       </fieldset>
@@ -28,10 +27,11 @@
 
   <div id="search-info"></div>
   <section id="search-results" class="mt5"></section>
-  <div class="search-loading tc mid-gray f4 mt4">Loading...</div>
+  <div class="search-loading tc mid-gray f4 mt4">
+    {{ .Param "loading" | default "Loading..." }}
+  </div>
 
   <script>
-    // Damit JS (z.B. category view) zuverlässig wieder auf diese Seite linken kann:
     window.SEARCH_PAGE = {{ .RelPermalink | jsonify | safeJS }};
 
     // Produkte: product_id -> Daten (inkl. categories)
@@ -56,9 +56,27 @@
     {{- end -}}
     {{- end -}}
 
+    {{- /*
+        Aliases for fuzzy search across languages.
+        - Always include current title
+        - Include titles of all translations (other languages)
+        - Optionally include custom aliases from front matter (aliases: [..])
+    */ -}}
+    {{- $aliases := slice -}}
+    {{- $aliases = $aliases | append .Title -}}
+    {{- range .Translations -}}
+    {{- $aliases = $aliases | append .Title -}}
+    {{- end -}}
+    {{- with .Params.aliases -}}
+    {{- range . -}}
+    {{- $aliases = $aliases | append . -}}
+    {{- end -}}
+    {{- end -}}
+
     {{- $obj := dict
       "id" $pid
       "title" .Title
+      "aliases" $aliases
       "link" .RelPermalink
       "image" $img
       "description" (default "" .Params.description)
@@ -91,10 +109,10 @@
   <script src="{{ $fuzzy.RelPermalink }}" integrity="{{ $fuzzy.Data.Integrity }}"></script>
   {{ end }}
 
-  {{ with resources.Get "js/search_erweitert.js" }}
-  {{ $js := . | minify | fingerprint }}
-  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
-  {{ end }}
+  {{ $src := resources.Get "js/search_erweitert.js" }}
+  {{ $out := printf "gen/search_erweitert.%s.js" .Lang }}
+  {{ $js := $src | resources.ExecuteAsTemplate $out . | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 
   {{ with resources.Get "css/search_erweitert.css" }}
   {{ $css := . | minify | fingerprint }}

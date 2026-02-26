@@ -33,18 +33,31 @@
         }
     }
 
-    // --- Fuzzy helper is outsourced to assets/js/fuzzy_search.js ---------------------------------
+    // Simple template formatter: "Hello {name}" + {name:"X"}
+    function fmt(s, vars) {
+        return String(s ?? "").replace(/\{(\w+)\}/g, (_, k) => String(vars?.[k] ?? ""));
+    }
+
+    const I18N = {
+        multiple_products: {{ .Param "multiple_products" | default "Multiple products detected. Choose one:" | jsonify }},
+    no_substitutes_for: {{ .Param "no_substitutes_for" | default "No substitutes found for “{term}”." | jsonify }},
+    showing_substitutes_for_matched: {{ .Param "showing_substitutes_for_matched" | default "Showing substitutes for “{resolved}” (matched from “{wanted}”)." | jsonify }},
+    did_you_mean: {{ .Param "did_you_mean" | default "Did you mean:" | jsonify }},
+    no_products_in_category: {{ .Param "no_products_in_category" | default "No products found in category “{category}”." | jsonify }},
+    search_placeholder: {{ .Param "search_placeholder" | default "Search…" | jsonify }},
+};
+
     // The module registers itself on window.SE2_FUZZY.
     const FUZZY = window.SE2_FUZZY || null;
 
-    // Parameter je nach Modus
+    // Parameters by mode
     const qRaw = param("q") || "";
     const cRaw = param("c") || "";
 
     const termQ = qRaw.trim().toLowerCase();
     const termC = cRaw.trim().toLowerCase();
 
-    // Priorität: q > c
+    // Priority: q > c
     const mode = termQ ? "q" : (termC ? "c" : "none");
 
     const loading = document.querySelector(".search-loading");
@@ -54,7 +67,7 @@
 
     if (queryInput) {
         queryInput.value = qRaw;
-        queryInput.setAttribute("placeholder", termQ || "Search…");
+        queryInput.setAttribute("placeholder", termQ || I18N.search_placeholder || "Search…");
     }
 
     const PRODUCTS = window.SEARCH_PRODUCTS || {};
@@ -91,7 +104,7 @@
           <h2 class="f3 mt2 mb2">
             <a href="${esc(link)}" class="link eg-product-title">${esc(p.title)}</a>
           </h2>
-        </div>      
+        </div>
       </div>
     `;
     }
@@ -118,13 +131,13 @@
         }).join("\n");
 
         return `
-          <div class="mt3">
-            <div class="mid-gray">Did you mean:</div>
-            <ul class="list pl0 mt2">
-              ${items}
-            </ul>
-          </div>
-        `;
+      <div class="mt3">
+        <div class="mid-gray">${esc(I18N.did_you_mean || "Did you mean:")}</div>
+        <ul class="list pl0 mt2">
+          ${items}
+        </ul>
+      </div>
+    `;
     }
 
     if (mode === "q") {
@@ -146,16 +159,16 @@
             }).join("\n");
 
             if (infoEl) {
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">Multiple products detected. Choose one:</div>`;
+                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(I18N.multiple_products || "Multiple products detected. Choose one:")}</div>`;
             }
 
             resultsEl.innerHTML = `
-              <div class="mt3">
-                <ul class="list pl0 mt2 tc">
-                  ${items}
-                </ul>
-              </div>
-            `;
+        <div class="mt3">
+          <ul class="list pl0 mt2 tc">
+            ${items}
+          </ul>
+        </div>
+      `;
             hide(loading);
             return;
         }
@@ -163,12 +176,15 @@
         const searchKey = foundKeys[0] || "";
 
         if (!searchKey) {
+            const msg = fmt(I18N.no_substitutes_for || "No substitutes found for “{term}”.", {
+                term: qRaw.trim()
+            });
+
             if (infoEl) {
-                const msg = `No substitutes found for “${esc(qRaw.trim())}”.`;
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${msg}${renderSuggestions(suggestions)}</div>`;
+                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(msg)}${renderSuggestions(suggestions)}</div>`;
                 resultsEl.innerHTML = "";
             } else {
-                resultsEl.innerHTML = `<p class="tc mid-gray f4 mt5">No substitutes found for “${esc(qRaw.trim())}”.</p>`;
+                resultsEl.innerHTML = `<p class="tc mid-gray f4 mt5">${esc(msg)}</p>`;
             }
             hide(loading);
             return;
@@ -181,12 +197,17 @@
         if (infoEl) {
             const wanted = qRaw.trim();
             const resolvedTitle = PRODUCTS[searchKey]?.title || searchKey;
+
             if (!wanted) {
                 infoEl.innerHTML = "";
             } else if (wanted.trim().toLowerCase() === searchKey) {
                 infoEl.innerHTML = "";
             } else {
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">Showing substitutes for “${esc(resolvedTitle)}” (matched from “${esc(wanted)}”).</div>`;
+                const msg = fmt(I18N.showing_substitutes_for_matched || "Showing substitutes for “{resolved}” (matched from “{wanted}”).", {
+                    resolved: resolvedTitle,
+                    wanted: wanted
+                });
+                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(msg)}</div>`;
             }
         }
 
@@ -198,9 +219,12 @@
         }
 
         if (ids.length === 0) {
+            const msg = fmt(I18N.no_substitutes_for || "No substitutes found for “{term}”.", {
+                term: PRODUCTS[searchKey]?.title || searchKey
+            });
+
             if (infoEl) {
-                const msg = `No substitutes found for “${esc(PRODUCTS[searchKey]?.title || searchKey)}”.`;
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${msg}</div>`;
+                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(msg)}</div>`;
             }
             resultsEl.innerHTML = "";
             hide(loading);
@@ -222,9 +246,13 @@
         if (cardObjs.length === 0) {
             const missing = ids.filter(id => !PRODUCTS[id]);
             console.warn("Relations found, but substitute products are missing in PRODUCTS:", missing);
+
+            const msg = fmt(I18N.no_substitutes_for || "No substitutes found for “{term}”.", {
+                term: PRODUCTS[searchKey]?.title || searchKey
+            });
+
             if (infoEl) {
-                const msg = `No substitutes found for “${esc(PRODUCTS[searchKey]?.title || searchKey)}”.`;
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${msg}</div>`;
+                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(msg)}</div>`;
             }
             resultsEl.innerHTML = "";
             hide(loading);
@@ -249,12 +277,16 @@
         });
 
         if (matches.length === 0) {
+            const msg = fmt(I18N.no_products_in_category || "No products found in category “{category}”.", {
+                category: termC
+            });
+
             if (infoEl) {
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">No products found in category “${esc(termC)}”.</div>`;
+                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(msg)}</div>`;
             }
             resultsEl.innerHTML = "";
             hide(loading);
-            return
+            return;
         }
 
         matches.sort((a, b) => String(a.title).localeCompare(String(b.title)));
