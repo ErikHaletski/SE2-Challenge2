@@ -27,54 +27,59 @@
   <div class="scroll-content pa3 center w-70-l" id="HowTo">
 	  <h1 class="f1 tc-l">How To Use</h1>
 	Lorem Ipsum und so
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Ldark-greenorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </div>
 
-  {{ if and ($show_recent_posts) (compare.Ge $section_count 1) }}
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
-      {{ $n_posts := $.Param "recent_posts_number" | compare.Default 3 }}
-
-      <section class="w-100 mw8">
-        {{/* Range through the first $n_posts items of the section */}}
-        {{ range (collections.First $n_posts $section) }}
-          <div class="w-100 mb4 relative scroll-content">
-            {{ .Render "summary-with-image" }}
-          </div>
-        {{ end }}
-      </section>
-
-      {{ if compare.Ge $section_count (math.Add $n_posts 1) }}
-        <section class="w-100">
-          <h1 class="f3">{{ lang.Translate "more" }}</h1>
-          {{/* Now, range through the next four after the initial $n_posts items. Nest the requirements, "after" then "first" on the outside */}}
-          {{ range (collections.First 4 (collections.After $n_posts $section))  }}
-            <h2 class="f5 fw4 mb4 dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "ml3" "mr3" }}">
-              <a href="{{ .RelPermalink }}" class="link black dim">
-                {{ .Title }}
-              </a>
-            </h2>
-          {{ end }}
-        </section>
-      {{ end }}
-
-    </div>
-  {{ end }}
  <div class="scroll-content pa3 center w-70-l" id="Mission">
-	  <h1 class="f1 tc-l">Lorem Titel</h1>
-	Lorem Ipsum und so
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis facilisis pellentesque. Nunc neque lectus, interdum ut sollicitudin vel, efficitur et nisi. Etiam imperdiet suscipit auctor. Vivamus at nulla eu mi convallis accumsan. Donec luctus sem eget turpis rutrum maximus. Nullam ullamcorper turpis nisl, a convallis ex semper quis. Cras id tempor leo, in rhoncus mi. Aliquam finibus elementum erat vel imperdiet. Aliquam tincidunt velit vel dui rutrum, sit amet laoreet nibh rhoncus. Curabitur tincidunt augue egestas nulla elementum, in efficitur elit dignissim. Nullam tincidunt pretium elit vel fringilla. Sed mattis rutrum felis, id laoreet magna dignissim vitae. Fusce euismod ultricies lorem in maximus. Integer in eleifend sapien, et ultricies elit.
+	  <h1 class="f1 tc-l">Our Mission</h1>
+    
+    <div class="flex items-start flex-wrap mb4" style="margin-bottom: 80px; flex-direction: row-reverse;">
+      <div class="w-100 w-50-ns pl2-ns pl4-l">
+        <img src="{{ "media/mission/cows-barn.jpg" | relURL }}" alt="Tierwohl" class="w-100 br3">
+      </div>
+      <div class="w-100 w-50-ns pr2-ns pr4-l">
+        <h3 class="mt0">{{ .Param "our_mission_title_1" }}</h3>
+        <p>
+          {{ .Param "our_mission_para_1" }}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-start flex-wrap mb4" style="margin-bottom: 80px;">
+      <div class="w-100 w-50-ns pr2-ns pr4-l">
+        <img src="{{ "media/mission/yoga.jpg" | relURL }}" alt="Tierwohl" class="w-100 br3">
+      </div>
+      <div class="w-100 w-50-ns pl2-ns pl4-l">
+        <h3 class="mt0">{{ .Param "our_mission_title_2" }}</h3>
+        <p>
+          {{ .Param "our_mission_para_2" }}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-start flex-wrap mb4" style="margin-bottom: 80px; flex-direction: row-reverse;">
+      <div class="w-100 w-50-ns pl2-ns pl4-l">
+        <img src="{{ "media/mission/sunrise-bali-jungle.jpg" | relURL }}" alt="Klimafreundlichkeit" class="w-100 br3">
+      </div>
+      <div class="w-100 w-50-ns pr2-ns pr4-l">
+        <h3 class="mt0">{{ .Param "our_mission_title_3" }}</h3>
+        <p>
+          {{ .Param "our_mission_para_3" }}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-start flex-wrap mb4">
+      <div class="w-100 w-50-ns pr2-ns pr4-l">
+        <img src="{{ "media/mission/veggies.jpg" | relURL }}" alt="Genuss & Vielfalt" class="w-100 br3">
+      </div>
+      <div class="w-100 w-50-ns pl2-ns pl4-l">
+        <h3 class="mt0">{{ .Param "our_mission_title_4" }}</h3>
+        <p>
+          {{ .Param "our_mission_para_4" }}
+        </p>
+      </div>
+    </div>
   </div>
 <style>
 	html {
