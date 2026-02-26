@@ -69,8 +69,8 @@
         } else {
             imgEl.style.display = "none";
         }
-        
-        
+
+
 
         hide(noteEl);
         show(compareTable, "table");

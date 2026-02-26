@@ -3,13 +3,13 @@
 		"structure": "multiple_folders",
 		"locales": ["en", "de"]
 	},
-    "backend": {
-        "name": "github",
-        "repo": "ErikHaletski/SE2-Challenge2",
-		"branch": "SE2-39-naherwertetabell"
-    },
-    "media_folder": "/static/media",
-    "public_folder": "/media",
+	"backend": {
+		"name": "github",
+		"repo": "ErikHaletski/SE2-Challenge2",
+		"branch": "develop"
+	},
+	"media_folder": "/static/media",
+	"public_folder": "/media",
 
 	"collections": [
 		{
