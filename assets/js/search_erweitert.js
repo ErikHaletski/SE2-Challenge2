@@ -40,12 +40,13 @@
 
     const I18N = {
         multiple_products: {{ .Param "multiple_products" | default "Multiple products detected. Choose one:" | jsonify }},
-    no_substitutes_for: {{ .Param "no_substitutes_for" | default "No substitutes found for “{term}”." | jsonify }},
-    showing_substitutes_for_matched: {{ .Param "showing_substitutes_for_matched" | default "Showing substitutes for “{resolved}” (matched from “{wanted}”)." | jsonify }},
-    did_you_mean: {{ .Param "did_you_mean" | default "Did you mean:" | jsonify }},
-    no_products_in_category: {{ .Param "no_products_in_category" | default "No products found in category “{category}”." | jsonify }},
-    search_placeholder: {{ .Param "search_placeholder" | default "Search…" | jsonify }},
-};
+        no_substitutes_for: {{ .Param "no_substitutes_for" | default "No substitutes found for “{term}”." | jsonify }},
+        did_you_mean: {{ .Param "did_you_mean" | default "Did you mean:" | jsonify }},
+        no_products_in_category: {{ .Param "no_products_in_category" | default "No products found in category “{category}”." | jsonify }},
+        search_placeholder: {{ .Param "search_placeholder" | default "Search…" | jsonify }},
+        showing_substitutes_for: {{ .Param "showing_substitutes_for" | default "Substitutes for “{resolved}”" | jsonify }},
+        matched_from: {{ .Param "matched_from" | default "matched from “{wanted}”" | jsonify }},
+    };
 
     // The module registers itself on window.SE2_FUZZY.
     const FUZZY = window.SE2_FUZZY || null;
@@ -198,16 +199,22 @@
             const wanted = qRaw.trim();
             const resolvedTitle = PRODUCTS[searchKey]?.title || searchKey;
 
-            if (!wanted) {
-                infoEl.innerHTML = "";
-            } else if (wanted.trim().toLowerCase() === searchKey) {
-                infoEl.innerHTML = "";
-            } else {
-                const msg = fmt(I18N.showing_substitutes_for_matched || "Showing substitutes for “{resolved}” (matched from “{wanted}”).", {
-                    resolved: resolvedTitle,
-                    wanted: wanted
+            // Only show if we actually corrected/changed the query
+            if (wanted && wanted.trim().toLowerCase() !== searchKey) {
+                const main = fmt(I18N.showing_substitutes_for || "Substitutes for “{resolved}”", {
+                    resolved: resolvedTitle
                 });
-                infoEl.innerHTML = `<div class="tc mid-gray f5 mt4">${esc(msg)}</div>`;
+
+                const sub = fmt(I18N.matched_from || "matched from “{wanted}”", { wanted });
+
+                infoEl.innerHTML = `
+      <div class="tc mid-gray f6 mt2 mb2" style="max-width: 42rem; margin-left:auto; margin-right:auto;">
+        <span>${esc(main)}</span>
+        <span class="ml2 o-60">(${esc(sub)})</span>
+      </div>
+    `;
+            } else {
+                infoEl.innerHTML = "";
             }
         }
 
