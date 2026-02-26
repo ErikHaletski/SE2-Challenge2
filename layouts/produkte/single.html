@@ -1,11 +1,12 @@
 {{ define "main" }}
 
+{{ $t := .CurrentSection.Params }}
+
 {{ with resources.Get "css/produkte.css" }}
 {{ $css := . | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ end }}
 
-<!-- Produkt-Index (damit JS ?q=<product_id> auflösen kann) -->
 <script>
   window.SEARCH_PRODUCTS = {
   {{- $first := true -}}
@@ -45,23 +46,28 @@
 <h1>{{ .Title }}</h1>
 
 <ul class="navbar">
-  <li><button id="btn-overview" class="active" onclick="showOverview()">Übersicht</button></li>
-  <li><button id="btn-nutrition" onclick="showNutrition()">Nährwerte</button></li>
+  <li><button id="btn-overview" class="active" onclick="showOverview()">{{ $t.buttontext1 }}</button></li>
+  <li><button id="btn-nutrition" onclick="showNutrition()">{{ $t.buttontext2 }}</button></li>
 </ul>
 
 <div class="produkt-flex-wrapper">
   <div class="produkt-left">
+
     <div id="produkt-id" class="produkt-detail">
       <div class="produkt-image">
         {{ with .Params.image }}
-        <img src="{{ . }}" alt="Produktbild von {{ $.Title }}">
+        <img src="{{ . }}" alt="{{ $t.product_image_alt }} {{ $.Title }}">
         {{ end }}
       </div>
+
       <div class="produkt-info">
-        <h3>Beschreibung:</h3>
+        <h3>{{ $t.title_para1 }}</h3>
         <p>{{ .Params.description }}</p>
+
         <ul>
-          <li id="bestfor"><strong>Best For:</strong> {{ .Params.best_for }}</li>
+          <li id="bestfor">
+            <strong>{{ $t.best_for_label }}</strong> {{ .Params.best_for }}
+          </li>
         </ul>
       </div>
     </div>
@@ -71,9 +77,9 @@
       {{ $imgPath := printf "nutriscore/nutri_%s.png" $score }}
 
       {{ with resources.Get $imgPath }}
-      <img class="nutriscore" src="{{ .RelPermalink }}" alt="Nutri-Score {{ $score }}">
+      <img class="nutriscore" src="{{ .RelPermalink }}" alt="{{ $t.nutriscore_alt }} {{ $score }}">
       {{ else }}
-      <span>kein Bild zum Nutriscore gefunden :C</span>
+      <span>{{ $t.nutriscore_missing }}</span>
       {{ end }}
 
       {{ range .Params.labels }}
@@ -81,54 +87,64 @@
       {{ $imgPath := printf "labels/%s.png" $label }}
 
       {{ with resources.Get $imgPath }}
-      <img class="label-img" src="{{ .RelPermalink }}" alt="Label {{ $label }}">
+      <img class="label-img" src="{{ .RelPermalink }}" alt="{{ $t.label_alt }} {{ $label }}">
       {{ else }}
-      <span>kein Bild für {{ $label }} gefunden :C</span>
+      <span>{{ $t.label_missing }} {{ $label }}</span>
       {{ end }}
       {{ end }}
     </div>
+
   </div>
 
   <div id="produkt-right" class="produkt-right">
-    <h3>Suchprodukt: <span id="search-product-title"></span></h3>
-    <img id="search-product-image" src="" alt="Suchprodukt Bild">
+    <h3>
+      {{ $t.title_para2 }}
+      <span id="search-product-title"></span>
+    </h3>
+
+    <img id="search-product-image" src="" alt="{{ $t.search_product_image_alt }}">
   </div>
 </div>
-
 
 </div>
 
 <div id="nutritions-detail" class="nutritions-detail">
   <div class="table-wrapper">
 
+    <!-- Ersatzprodukt -->
     <table class="nutrition-table bg-dark-green">
       <tr>
-        <th>Nährwerte <mark>Ersatzprodukt</mark></th>
-        <th>je 100g</th>
+        <th>{{ $t.nutrition_table_title }} {{ $t.replacement_product_label }}</th>
+        <th>{{ $t.nutrition_per_100g }}</th>
       </tr>
-      <tr><td>Energie:</td><td>{{ .Params.calories }}kcal</td></tr>
-      <tr><td>Fett:</td><td>{{ .Params.fats }}g</td></tr>
-      <tr><td>- <i>davon gesättigte Fettsäuren:</i></td><td>{{ .Params.saturated_fats }}g</td></tr>
-      <tr><td>Kohlenhydrate:</td><td>{{ .Params.carbs }}g</td></tr>
-      <tr><td>- <i>davon Zucker:</i></td><td>{{ .Params.sugars }}g</td></tr>
-      <tr><td>Ballaststoffe:</td><td>{{ .Params.fiber }}g</td></tr>
-      <tr><td>Eiweiß:</td><td>{{ .Params.protein }}g</td></tr>
-      <tr><td>Salz:</td><td>{{ .Params.salt }}g</td></tr>
+      <tr><td>{{ $t.nutrition_energy }}:</td><td>{{ .Params.calories }}kcal</td></tr>
+      <tr><td>{{ $t.nutrition_fat }}:</td><td>{{ .Params.fats }}g</td></tr>
+      <tr><td>- <i>{{ $t.nutrition_saturated }}</i></td><td>{{ .Params.saturated_fats }}g</td></tr>
+      <tr><td>{{ $t.nutrition_carbs }}:</td><td>{{ .Params.carbs }}g</td></tr>
+      <tr><td>- <i>{{ $t.nutrition_sugar }}</i></td><td>{{ .Params.sugars }}g</td></tr>
+      <tr><td>{{ $t.nutrition_fiber }}:</td><td>{{ .Params.fiber }}g</td></tr>
+      <tr><td>{{ $t.nutrition_protein }}:</td><td>{{ .Params.protein }}g</td></tr>
+      <tr><td>{{ $t.nutrition_salt }}:</td><td>{{ .Params.salt }}g</td></tr>
     </table>
+
+        <!-- Vergleichszusammenfassung -->
+    <div id="nutrition-comparison-summary" class="nutrition-comparison-summary">
+      <p id="comparison-protein"></p>
+    </div>
 
     <table id="nutrition-compare-table" class="nutrition-compare-table bg-dark-green">
       <tr>
-        <th>Nährwerte <mark><span id="search-product-table"></span></mark>:</th>
-        <th>je 100g</th>
+        <th>{{ $t.nutrition_compare_title }} <span id="search-product-table"></span></th>
+        <th>{{ $t.nutrition_per_100g }}</th>
       </tr>
-      <tr><td>Energie:</td><td id="sp-calories">—</td></tr>
-      <tr><td>Fett:</td><td id="sp-fats">—</td></tr>
-      <tr><td>- <i>davon gesättigte Fettsäuren:</i></td><td id="sp-saturated_fats">—</td></tr>
-      <tr><td>Kohlenhydrate:</td><td id="sp-carbs">—</td></tr>
-      <tr><td>- <i>davon Zucker:</i></td><td id="sp-sugars">—</td></tr>
-      <tr><td>Ballaststoffe:</td><td id="sp-fiber">—</td></tr>
-      <tr><td>Eiweiß:</td><td id="sp-protein">—</td></tr>
-      <tr><td>Salz:</td><td id="sp-salt">—</td></tr>
+      <tr><td>{{ $t.nutrition_energy }}:</td><td id="sp-calories">—</td></tr>
+      <tr><td>{{ $t.nutrition_fat }}:</td><td id="sp-fats">—</td></tr>
+      <tr><td>- <i>{{ $t.nutrition_saturated }}</i></td><td id="sp-saturated_fats">—</td></tr>
+      <tr><td>{{ $t.nutrition_carbs }}:</td><td id="sp-carbs">—</td></tr>
+      <tr><td>- <i>{{ $t.nutrition_sugar }}</i></td><td id="sp-sugars">—</td></tr>
+      <tr><td>{{ $t.nutrition_fiber }}:</td><td id="sp-fiber">—</td></tr>
+      <tr><td>{{ $t.nutrition_protein }}:</td><td id="sp-protein">—</td></tr>
+      <tr><td>{{ $t.nutrition_salt }}:</td><td id="sp-salt">—</td></tr>
     </table>
 
   </div>

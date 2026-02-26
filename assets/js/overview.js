@@ -51,7 +51,6 @@
             return;
         }
 
-        // Tabelle befüllen
         setText("search-product-title", p.title || searchProductId);
         setText("search-product-table", p.title || searchProductId);
         setText("sp-calories", formatValue(p.calories, "kcal"));
@@ -66,10 +65,11 @@
         if (p.image) {
             imgEl.src = p.image;   // Pfad zum Bild aus deinem Produktobjekt
             imgEl.alt = p.title;
-            imgEl.style.display = "block";  // Bild sichtbar machen
+            imgEl.style.display = "block";
         } else {
-            imgEl.style.display = "none";   // Bild ausblenden, falls keins vorhanden
+            imgEl.style.display = "none";
         }
+        
         
 
         hide(noteEl);
