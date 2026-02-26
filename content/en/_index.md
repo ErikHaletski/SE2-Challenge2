@@ -2,6 +2,8 @@
 title: Home
 type: home
 
+search: "Search"
+
 our_mission_title_1: "Animal welfare"
 our_mission_title_2: "Health"
 our_mission_title_3: "Climate friendliness"

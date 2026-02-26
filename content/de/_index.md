@@ -2,6 +2,8 @@
 title: Home
 type: home
 
+search: "Suchen"
+
 our_mission_title_1: "Tierwohl"
 our_mission_title_2: "Gesundheit"
 our_mission_title_3: "Klimafreundlichkeit"
