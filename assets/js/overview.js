@@ -63,7 +63,7 @@
         setText("sp-salt", formatValue(p.salt, "g"));
         const imgEl = document.getElementById("search-product-image");
         if (p.image) {
-            imgEl.src = p.image;   // Pfad zum Bild aus deinem Produktobjekt
+            imgEl.src = p.image;
             imgEl.alt = p.title;
             imgEl.style.display = "block";
         } else {
