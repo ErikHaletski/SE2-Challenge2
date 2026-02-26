@@ -111,7 +111,6 @@
 <div id="nutritions-detail" class="nutritions-detail">
   <div class="table-wrapper">
 
-    <!-- Ersatzprodukt -->
     <table class="nutrition-table bg-dark-green">
       <tr>
         <th>{{ $t.nutrition_table_title }} {{ $t.replacement_product_label }}</th>
@@ -123,14 +122,10 @@
       <tr><td>{{ $t.nutrition_carbs }}:</td><td>{{ .Params.carbs }}g</td></tr>
       <tr><td>- <i>{{ $t.nutrition_sugar }}</i></td><td>{{ .Params.sugars }}g</td></tr>
       <tr><td>{{ $t.nutrition_fiber }}:</td><td>{{ .Params.fiber }}g</td></tr>
-      <tr><td>{{ $t.nutrition_protein }}:</td><td>{{ .Params.protein }}g</td></tr>
+      <tr><td id="pro">{{ $t.nutrition_protein }}:</td><td>{{ .Params.protein }}g</td></tr>
       <tr><td>{{ $t.nutrition_salt }}:</td><td>{{ .Params.salt }}g</td></tr>
     </table>
 
-        <!-- Vergleichszusammenfassung -->
-    <div id="nutrition-comparison-summary" class="nutrition-comparison-summary">
-      <p id="comparison-protein"></p>
-    </div>
 
     <table id="nutrition-compare-table" class="nutrition-compare-table bg-dark-green">
       <tr>

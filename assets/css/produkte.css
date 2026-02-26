@@ -144,14 +144,12 @@ ul.navbar li {
     filter: grayscale(100%);
 }
 
-/* Tablet / mittlere Bildschirme */
 @media (max-width: 900px) {
     .produkt-right {
         max-width: 40%;
     }
 }
 
-/* Sehr kleine Bildschirme */
 @media (max-width: 600px) {
     .produkt-flex-wrapper {
         flex-direction: column;
