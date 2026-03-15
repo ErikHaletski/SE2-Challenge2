@@ -31,3 +31,6 @@ profile.cov
 # IDE
 .idea/
 .vscode/
+
+# deploy script
+deploy.sh
