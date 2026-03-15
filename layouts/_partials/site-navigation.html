@@ -1,7 +1,6 @@
 <style>
 .dropdown {
 	position: relative;
-
 }
 
 .dropdown-content {
@@ -24,6 +23,8 @@
 }
 
 </style>
+
+
 <nav class="w-100 tracked fixed pb3-m bg-light-green" role="navigation" id="nav-bar">
 	<div class="flex-l center items-center fl w-10 pa2">
 		<a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-dark-green dark-green dib no-underline">
@@ -34,8 +35,97 @@
 			{{ end }}
 		</a>
 	</div>
-	<ul class="menu list tracked ma0 flex-l fl w-80 pa2 center items-center">
-		<div class="dib dark-green center" style="padding:0px;">
+	<div class="menu list tracked ma0 flex-l fl w-80 pa0 center items-center">
+		<ul class="dib mt0 dark-green center pt2">
+			{{ with .Site.GetPage "/" }}
+			<li class="dib ma2 w-100 w-auto-ns">
+				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">{{ i18n "home" }}</a>
+			</li> 
+			<li class="dib ma2 w-100 w-auto-ns">
+				<span>|</span>
+			</li>
+			<li class="dib ma2 w-100 w-auto-ns">
+				<a class="no-underline dark-green" href="{{ .RelPermalink }}#HowTo">{{ T "howToUse" }}</a>
+			</li>
+			<li class="dib ma2 w-100 w-auto-ns">
+				<span>|</span>
+			</li>
+			<li class="dib ma2 w-100 w-auto-ns">
+				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Mission">{{ T "ourMission" }}</a>
+			</li>
+			<li class="dib ma2 w-100 w-auto-ns">
+				<span>|</span>
+			</li>
+			{{ end }}
+			<li class="dib ma2 mb0 mr0 w-100 w-auto-ns hide-child relative-m relative-l">
+				<span class="dropdown">
+					<span class="f6 link dim br1 ba ph3 pv2 mb0 dib black">{{ T "categories" }}</span>
+					<div class="mt2 dropdown-content pl2 pr2 f6 child child-vs o-100-vs absolute-m absolute-l top-100-m w-100 bg-dark-green pt0 mt0 center">
+						{{ with .Site.GetPage "/search_erweitert" }}
+						<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
+							<input class="" placeholder=""  name="c" type="hidden" value="Backen">
+							<input class="w-100 f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "baking" }}">
+						</form>
+						<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
+							<input class="" placeholder=""  name="c" type="hidden" value="Aufschnitt">
+							<input class="w-100 f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "lunchmeat" }}">
+						</form>
+						<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
+							<input class="" placeholder=""  name="c" type="hidden" value="Grillen">
+							<input class="w-100 f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "grilling" }}">
+						</form>
+						<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
+							<input class="" placeholder=""  name="c" type="hidden" value="Fleisch">
+							<input class="w-100 f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "meat" }}">
+						</form>
+						<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
+							<input class="" placeholder=""  name="c" type="hidden" value="Milchprodukte">
+							<input class="w-100 f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "dairy" }}">
+						</form>
+						{{ end }}
+					</div>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="flex-l items-center fl w-10 pa2 tr">
+		{{ if .IsTranslated }}
+		<span class="tr w-100">{{ lang.Translate "translations" }}</span>
+		<ul class="tr {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+			{{ range .Translations }}
+			<li class="list tr dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+				<a class="hover-white dark-green no-underline" href="{{ .Permalink }}">{{ .Lang }}</a>
+			</li>
+			{{ end}}
+		</ul>
+		{{ end }}
+		{{ if .Site.Menus.main }}
+		<ul class="{{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+			{{ range .Site.Menus.main }}
+			<li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+				<a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
+					{{ .Name }}
+				</a>
+			</li>
+			{{ end }}
+		</ul>
+		{{ end }}
+		{{ partials.IncludeCached "social/follow.html" . }}
+	</div>
+</nav>
+<!--
+<nav class="w-100 tracked fixed pb3-m bg-light-green" role="navigation" id="nav-bar">
+	<div class="flex-l center items-center fl w-10 pa2">
+		<a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-dark-green dark-green dib no-underline">
+			{{ with resources.Get "logo.png" }}
+			<img src="{{ .RelPermalink }}" class="mw5-ns" width="30px" height="100%" alt="{{ .Title }}" />
+			{{ else }}
+			<span class="dark-green">eat </span><span class="light-silver">gr</span><span class="dark-green">ass.</span>
+			{{ end }}
+		</a>
+	</div>
+	<div class="menu list tracked ma0 flex-l fl w-80 pa2 center items-center" style="padding:0px;">
+		<ul class="dib dark-green center">
 			{{ with .Site.GetPage "/" }}
 			<li class="dib ma2 w-100 w-auto-ns">
 				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">{{ i18n "home" }}</a>
@@ -59,13 +149,13 @@
 			<li class="dib ma2 mb0 w-100 w-auto-ns hide-child relative-m relative-l">
 				<span class="dropdown">
 					<span class="f6 link dim br1 ba ph3 pv2 mb0 dib black">{{ T "categories" }}</span>
-					<ul class="dropdown-contents menu list pa0 f6 child child-vs o-100-vs absolute-m absolute-l top-100-m w-100 bg-dark-green pt0 mt0 center">
+					<ul class="dropdown-content menu list pa0 f6 child child-vs o-100-vs absolute-m absolute-l top-100-m w-100 bg-dark-green pt0 mt0 center">
 						{{ with .Site.GetPage "/search_erweitert" }}
 						<li class="ph2">
 							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Backen">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "baking" }}">
+									<input class="f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "baking" }}">
 								</span>
 							</form>
 						</li>
@@ -73,7 +163,7 @@
 							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Aufschnitt">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "lunchmeat" }}">
+									<input class="f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "lunchmeat" }}">
 								</span>
 							</form>
 						</li>
@@ -81,7 +171,7 @@
 							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Grillen">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Grillen">
+									<input class="f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "grilling" }}">
 								</span>
 							</form>
 						</li>
@@ -89,7 +179,7 @@
 							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Fleisch">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Fleisch">
+									<input class="f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "meat" }}">
 								</span>
 							</form>
 						</li>
@@ -97,7 +187,7 @@
 							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Milchprodukte">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Milchprodukte">
+									<input class="f6 f5-l button-reset fl pv3 tl bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "dairy" }}">
 								</span>
 							</form>
 						</li>
@@ -105,8 +195,8 @@
 					</ul>
 				</span>
 			</li>
-		</div>
-	</ul>
+		</ul>
+	</div>
 	<div class="flex-l items-center fl w-10 pa2 tr">
 		{{ if .IsTranslated }}
 		<span class="tr w-100">{{ lang.Translate "translations" }}</span>
@@ -132,3 +222,4 @@
 		{{ partials.IncludeCached "social/follow.html" . }}
 	</div>
 </nav>
+-->
