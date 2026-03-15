@@ -38,19 +38,19 @@
 		<div class="dib dark-green center" style="padding:0px;">
 			{{ with .Site.GetPage "/" }}
 			<li class="dib ma2 w-100 w-auto-ns">
-				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">Home</a>
+				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Home">{{ i18n "home" }}</a>
 			</li> 
 			<li class="dib ma2 w-100 w-auto-ns">
 				<span>|</span>
 			</li>
 			<li class="dib ma2 w-100 w-auto-ns">
-				<a class="no-underline dark-green" href="{{ .RelPermalink }}#HowTo">How To Use</a>
+				<a class="no-underline dark-green" href="{{ .RelPermalink }}#HowTo">{{ T "howToUse" }}</a>
 			</li>
 			<li class="dib ma2 w-100 w-auto-ns">
 				<span>|</span>
 			</li>
 			<li class="dib ma2 w-100 w-auto-ns">
-				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Mission">Our Mission</a>
+				<a class="no-underline dark-green" href="{{ .RelPermalink }}#Mission">{{ T "ourMission" }}</a>
 			</li>
 			<li class="dib ma2 w-100 w-auto-ns">
 				<span>|</span>
@@ -58,26 +58,27 @@
 			{{ end }}
 			<li class="dib ma2 mb0 w-100 w-auto-ns hide-child relative-m relative-l">
 				<span class="dropdown">
-					<span class="f6 link dim br1 ba ph3 pv2 mb0 dib black">Kategorien</span>
+					<span class="f6 link dim br1 ba ph3 pv2 mb0 dib black">{{ T "categories" }}</span>
 					<ul class="dropdown-contents menu list pa0 f6 child child-vs o-100-vs absolute-m absolute-l top-100-m w-100 bg-dark-green pt0 mt0 center">
+						{{ with .Site.GetPage "/search_erweitert" }}
 						<li class="ph2">
-							<form action="/search_erweitert" method="GET" class="mw7 center br2-ns">
+							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Backen">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Backen">
+									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "baking" }}">
 								</span>
 							</form>
 						</li>
 						<li class="ph2">
-							<form action="/search_erweitert" method="GET" class="mw7 center br2-ns">
+							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Aufschnitt">
-									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Aufschnitt">
+									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="{{ T "lunchmeat" }}">
 								</span>
 							</form>
 						</li>
 						<li class="ph2">
-							<form action="/search_erweitert" method="GET" class="mw7 center br2-ns">
+							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Grillen">
 									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Grillen">
@@ -85,7 +86,7 @@
 							</form>
 						</li>
 						<li class="ph2">
-							<form action="/search_erweitert" method="GET" class="mw7 center br2-ns">
+							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Fleisch">
 									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Fleisch">
@@ -93,13 +94,14 @@
 							</form>
 						</li>
 						<li class="ph2">
-							<form action="/search_erweitert" method="GET" class="mw7 center br2-ns">
+							<form action="{{ .RelPermalink }}" method="GET" class="mw7 center br2-ns">
 								<span class="">
 									<input class="w-100" placeholder=""  name="c" type="hidden" value="Milchprodukte">
 									<input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-dark-green hover-bg-dark-green white pointer" type="submit" value="Milchprodukte">
 								</span>
 							</form>
 						</li>
+						{{ end }}
 					</ul>
 				</span>
 			</li>

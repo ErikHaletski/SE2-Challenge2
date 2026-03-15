@@ -5,6 +5,7 @@ var currentContent = 0;
 $('html, body').animate({ scrollTop: 0 }, 0);
 
 $(window).on('mousewheel DOMMouseScroll', function(e) {
+	console.log("scroll")
 	var direction = 'down';
 	var $th = $(this);
 	var currentContentOffset = currentContent * winHeight;
@@ -13,9 +14,9 @@ $(window).on('mousewheel DOMMouseScroll', function(e) {
 		direction = 'up';
 	}
 
-	if (direction == 'down' && currentContent <= scrollContent.length - 2) {
+	if (direction == 'down' && currentContent <= scrollContent.length - 1) {
 		currentContent++;
-		scrollContent[currentContent].scrollIntoView();
+		scrollContent[currentContent].scrollIntoView(true, {behavior: "instant"});
 		if (currentContent >= 1) {
 			$("#nav-bar").addClass('o-90');
 		}

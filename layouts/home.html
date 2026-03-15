@@ -25,13 +25,13 @@
   {{ $section_count := len $section }}
 
   <div class="scroll-content pa3 center w-70-l" id="HowTo">
-	  <h1 class="f1 tc-l">How To Use</h1>
+	  <h1 class="f1 tc-l">{{ T "howToUse" }}</h1>
 	Lorem Ipsum und so
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </div>
 
  <div class="scroll-content pa3 center w-70-l" id="Mission">
-	  <h1 class="f1 tc-l">Our Mission</h1>
+	 <h1 class="f1 tc-l">{{ T "ourMission" }}</h1>
     
     <div class="flex items-start flex-wrap mb4" style="margin-bottom: 80px; flex-direction: row-reverse;">
       <div class="w-100 w-50-ns pl2-ns pl4-l">
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <div class="flex items-start flex-wrap mb4" style="margin-bottom: 80px;">
+    <div class="scroll-content flex items-start flex-wrap mb4" style="margin-bottom: 80px;">
       <div class="w-100 w-50-ns pr2-ns pr4-l">
         <img src="{{ "media/mission/yoga.jpg" | relURL }}" alt="Tierwohl" class="w-100 br3">
       </div>
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="flex items-start flex-wrap mb4" style="margin-bottom: 80px; flex-direction: row-reverse;">
+    <div class="scroll-content flex items-start flex-wrap mb4" style="margin-bottom: 80px; flex-direction: row-reverse;">
       <div class="w-100 w-50-ns pl2-ns pl4-l">
         <img src="{{ "media/mission/sunrise-bali-jungle.jpg" | relURL }}" alt="Klimafreundlichkeit" class="w-100 br3">
       </div>
@@ -95,8 +95,5 @@
 </style>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	{{ with resources.Get "js/auto-scroll.js" }}
-		<script src="{{ .RelPermalink }}"></script>
-	{{ end }}
 {{ end }}
 
