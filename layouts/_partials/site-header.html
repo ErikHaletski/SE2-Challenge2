@@ -11,7 +11,9 @@
 			</h1>
 			
 			<div class="pa4-l">
-				<form action="/search_erweitert" method="GET" class="mw7 center pa4 br2-ns">
+				{{ with .Site.GetPage "/search_erweitert" }}
+				<form action="{{ .RelPermalink }}" method="GET" class="mw7 center pa4 br2-ns">
+				{{ end }}
 					<fieldset class="cf bn ma0 pa0">
 						<div class="">
 							<input class="f6 f5-l input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns" placeholder="{{ .Param "search" }}..." type="search" name="q">
