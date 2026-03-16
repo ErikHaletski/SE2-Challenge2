@@ -13,39 +13,6 @@
 
 	"collections": [
 		{
-			"name": "blog",
-			"label": "Blog",
-			"folder": "/content/blog",
-			"i18n": true,
-			"fields": [
-				{
-					"label": "Title",
-					"name": "title",
-					"widget": "string",
-					"i18n": true
-				},
-				{
-					"label": "Body",
-					"name": "body",
-					"widget": "markdown",
-					"i18n": true
-				},
-				{
-					"label": "Description",
-					"name": "description",
-					"widget": "string",
-					"i18n": true
-				},
-				{
-					"label": "Publish Date",
-					"name": "date",
-					"widget": "datetime",
-					"i18n": "duplicate"
-				}
-			]
-		},
-
-		{
 			"label": "Produkte",
 			"name": "produkte",
 			"folder": "/content/produkte",
